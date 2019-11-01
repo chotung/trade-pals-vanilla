@@ -1,20 +1,21 @@
-// // import store from '../config/store'
-// // // import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../config/constants'
-// // // import { tiles } from '../data/maps/1'
-// // import {
-// //   makeInteraction
-// // } from '../features/player/movement'
+import store from '../store'
+
+//ACTIONS
+const REMOVE_PET_FROM_CATALOGUE = 'REMOVE_PET_FROM_CATALOGUE'
+// const REMOVED_FROM_CART = 'REMOVED_FROM_CART'
+// const UNDO_REMOVE = 'UNDO_REMOVE'
 
 
-// //ACTIONS
 
-// const UPDATE_DIRECTION = "UPDATE_DIRECTION"
-// // const MAKE_INTERACTION = "MAKE_INTERACTION"
-// const UPDATE_EVENT = "UPDATE_EVENT"
-// const RESET_EVENT = "RESET_EVENT"
-// const UPDATE_MAP = "UPDATE_MAP"
-// const MAIN_MAP = "MAIN_MAP"
-// const MOD_TWO = "MOD_TWO"
+export const removePetFromCatalogue = (pet) => {
+  // console.log('dispatching action of adding a pet to the cart state')
+  // console.log(pet)
+  store.dispatch({
+    type: REMOVE_PET_FROM_CATALOGUE,
+    payload: pet
+  })
+}
+
 
 // export const dispatchDirection = (direction, map) => {
 //   store.dispatch({

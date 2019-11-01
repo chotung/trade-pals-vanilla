@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react'
+import CartItem from '../components/CartItem';
+import DeliveryOptions from '../containers/DeliveryOptions'
 
-const ShoppingCart = () => {
-  return (
-    <div>
-      This is shopping cart
-    </div>
-  );
+
+export default class ShoppingCart extends Component {
+  render() {
+    return (
+      <div>
+        <CartItem />
+        <DeliveryOptions />
+      </div>
+    )
+  }
 }
-
-export default ShoppingCart;
