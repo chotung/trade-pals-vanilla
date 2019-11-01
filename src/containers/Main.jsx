@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PetCard from '../components/PetCard'
 import { connect } from 'react-redux'
-import { removePetFromCatalogue } from '../config/actions'
+import { removePetFromCatalogue, addToCart } from '../config/actions'
 
 const mapStateToProps = state => {
   return {
@@ -13,10 +13,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(class Main extends Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    //   pets: this.props.pets,
-    //   cart: []
-    // }
 
     this.addToCart = this.addToCart.bind(this)
     this.makeCards = this.makeCards.bind(this)
@@ -37,6 +33,7 @@ export default connect(mapStateToProps)(class Main extends Component {
     //   }))
     // console.log(availablePets)
     removePetFromCatalogue(availablePets)
+    addToCart(chosenPet[0])
   }
   
   makeCards() {

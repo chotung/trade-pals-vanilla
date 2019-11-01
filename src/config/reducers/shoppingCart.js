@@ -1,6 +1,8 @@
 const initialState = {
   undoRemove: {},
-  cart: {name:'leo', age: 10, sex: "male", location: "MD", breed: "golden retriever"}
+  cart: [{
+    name:'leo', age: 10, sex: "male", location: "MD", breed: "golden retriever"
+  }]
 }
 
 
@@ -18,12 +20,11 @@ const shoppingCart = (state = initialState, action) => {
 
     case 'ADD_TO_CART':
       console.log('get a pet and add to cart state');
-      return [
+      return {
         ...state,
-        {
-          cart: action.payload
+        cart: [...state.cart, action.payload]
         }
-      ]
+      
 
     case 'REMOVE_FROM_CART':
       console.log('get a pet and remove from cart state');
