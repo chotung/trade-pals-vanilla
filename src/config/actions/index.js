@@ -9,8 +9,6 @@ const ADD_TO_CART = 'ADD_TO_CART'
 
 // PET ACTIONS
 export const removePetFromCatalogue = (pets) => {
-  // console.log('dispatching action of adding a pets to the cart state')
-  // console.log(pets)
   store.dispatch({
     type: REMOVE_PET_FROM_CATALOGUE,
     payload: pets
@@ -22,7 +20,6 @@ export const removePetFromCatalogue = (pets) => {
 
 
 export const addToCart = (pet) => {
-  console.log('adding to cart')
   store.dispatch({
     type: ADD_TO_CART,
     payload: pet

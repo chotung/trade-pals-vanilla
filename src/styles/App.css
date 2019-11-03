@@ -1,4 +1,12 @@
 .nav {
+  margin: 0;
+}
+
+.nav a h3 {
+  margin: 0;
+}
+
+.nav {
   background: gray;
 }
 /*# sourceMappingURL=App.css.map */

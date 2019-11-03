@@ -19,26 +19,17 @@ export default connect(mapStateToProps)(class Main extends Component {
   }
 
 
-
-  // Might want to refactor this out into redux??
   addToCart(event) {
     event.preventDefault()
     const { pets } = this.props
-    // const { pets } = this.state
     const chosenPet = pets.filter(pet => pet.name === event.target.id)
     const availablePets = pets.filter(pet => pet.name !== event.target.id )
-    // this.setState((prevState) => ({
-    //     pets: availablePets,
-    //     cart: [...prevState.cart, chosenPet[0]],
-    //   }))
-    // console.log(availablePets)
     removePetFromCatalogue(availablePets)
     addToCart(chosenPet[0])
   }
   
   makeCards() {
     const { pets } = this.props
-    console.log('inside make cards ', this.props)
     return pets.map( (pet, i) => {
       return <PetCard key={i} addToCart={this.addToCart} pet={pet}/>
     })

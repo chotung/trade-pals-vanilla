@@ -46,22 +46,6 @@ const initialState = [
 
 const pets = (state = initialState, action) => {
   switch (action.type) {
-    // case 'UPLOAD PETS':
-    //   return [
-    //     ...state,
-    //     {
-    //       id: action.id,
-    //       text: action.text,
-    //       completed: false
-    //     }
-    //   ]
-    // case 'REMOVE_PET_FROM_CATALOGUE':
-    //   return [
-    //     {
-    //       ...state.pets,
-    //       pets: action.payload
-    //     },
-    //   ]
     case 'REMOVE_PET_FROM_CATALOGUE':
       return [
         ...action.payload

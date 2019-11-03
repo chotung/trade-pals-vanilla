@@ -8,18 +8,8 @@ const initialState = {
 
 const shoppingCart = (state = initialState, action) => {
   switch (action.type) {
-    // case 'ADD_USER':
-    //   return [
-    //     ...state,
-    //     {
-    //       id: action.id,
-    //       text: action.text,
-    //       completed: false
-    //     }
-    //   ]
 
     case 'ADD_TO_CART':
-      console.log('get a pet and add to cart state');
       return {
         ...state,
         cart: [...state.cart, action.payload]
