@@ -1,5 +1,7 @@
 const initialState = {
-  undoRemove: {},
+  undoRemove: function() {
+    console.log('undo remove')
+  },
   cart: [{
     name:'leo', age: 10, sex: "male", location: "MD", breed: "golden retriever"
   }]
@@ -13,7 +15,7 @@ const shoppingCart = (state = initialState, action) => {
       return {
         ...state,
         cart: [...state.cart, action.payload]
-        }
+      }
       
 
     case 'REMOVE_FROM_CART':

@@ -15,7 +15,6 @@ const Main = props => {
   const addingToCart = event => {
     event.preventDefault();
     const { pets } = props;
-    console.log('pets ', pets)
     const chosenPet = pets.filter(pet => pet.name === event.target.id);
     const availablePets = pets.filter(pet => pet.name !== event.target.id);
     // console.log(chosenPet)
