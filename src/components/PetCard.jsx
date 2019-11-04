@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap"
+import { Card, Button, Form } from "react-bootstrap"
 
 
 
@@ -25,17 +25,22 @@ const PetCard = props => {
     //     </button>
     //   </form>
     // </div>
-    <Card style={{ width: "100%"}}>
-      <Card.Body>
-        <Card.Img variant="top" src={`${pet.imgUrl}`} />
-        <Card.Title>{pet.name}</Card.Title>
-        <Card.Text>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem,
-          totam?
-        </Card.Text>
-        <Button variant="primary">Add To Cart</Button>
-      </Card.Body>
-    </Card>
+    <Form onSubmit={props.addToCart} id={pet.name} data={pet}>
+      <Card style={{ width: "100%" }}>
+        <Card.Body>
+          <Card.Img variant="top" src={`${pet.imgUrl}`} />
+          <Card.Title>{pet.name}</Card.Title>
+          <Card.Text>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Voluptatem, totam?
+          </Card.Text>
+          <Button variant="primary" type="submit" value="Submit">
+            Add To Cart
+          </Button>
+          <Button>Learn More</Button>
+        </Card.Body>
+      </Card>
+    </Form>
   );
 };
 

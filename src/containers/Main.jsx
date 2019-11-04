@@ -15,8 +15,10 @@ const Main = props => {
   const addingToCart = event => {
     event.preventDefault();
     const { pets } = props;
+    console.log('pets ', pets)
     const chosenPet = pets.filter(pet => pet.name === event.target.id);
     const availablePets = pets.filter(pet => pet.name !== event.target.id);
+    // console.log(chosenPet)
     removePetFromCatalogue(availablePets);
     addToCart(chosenPet[0]);
   };
@@ -46,6 +48,7 @@ const Main = props => {
       return (
       <Row key={key}>
         {row.map((pet, i) => {
+          // console.log(pet)
           return (
             <Col
               lg={3}
@@ -64,12 +67,13 @@ const Main = props => {
   };
 
   const chunckArray = (arr, chunkCount) => {
-    const chunks = [];
-    while (arr.length) {
-      chunks.push(arr.splice(0, chunkCount));
+    let chunks = [],i,j
+    
+    for (i = 0, j = arr.length; i < j; i+= chunkCount) {
+      chunks.push(arr.slice(i, i + chunkCount)) 
     }
-    return chunks;
-  };
+    return chunks
+  }
 
   return (
     <Container className="pet-container justify-content-center" fluid="true">
