@@ -3,49 +3,35 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Main from "./containers/Main";
 import ShoppingCart from "./containers/ShoppingCart";
 import "./styles/App.css";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
-  }
-}));
+import {
+  // Container,
+  // Row,
+  // Col,
+  Navbar,
+  Nav,
+  // NavDropdown,
+  Button
+} from "react-bootstrap";
 
 const App = () => {
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
-      {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
       <Router>
-        <AppBar position="static">
-          <Toolbar>
+        <Navbar className="trade-pals-header" bg="light" expand="lg">
             <Link className="home" to="/">
-              <Typography variant="h6" className={classes.title}>
-                Trade Pals
-              </Typography>
+              Trade Pals
             </Link>
 
-            <Link className="cart" to="/shoppingcart">
-              <Button color="inherit">Cart</Button>
-            </Link>
-          </Toolbar>
-        </AppBar>
-        {/* Order matters */}
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto"></Nav>
+            <Button className="mr-sm-2" variant="outline-success">
+              <Link className="cart" to="/shoppingcart">
+                Cart
+              </Link>
+            </Button>
+          </Navbar.Collapse>
+        </Navbar>
+
         <Switch>
           <Route path="/shoppingcart">
             <ShoppingCart />
@@ -54,10 +40,34 @@ const App = () => {
             <Main />
           </Route>
         </Switch>
-        {/* </div> */}
       </Router>
-    </div>
   );
 };
 
 export default App;
+
+
+
+
+
+
+// </Container>
+    // <div className="app">
+    //   <Router>
+    //     <Link className="home" to="/">
+    //       Trade Pals
+    //     </Link>
+
+    //     <Link className="cart" to="/shoppingcart">
+    //       <button color="inherit">Cart</button>
+    //     </Link>
+    //     <Switch>
+    //       <Route path="/shoppingcart">
+    //         <ShoppingCart />
+    //       </Route>
+    //       <Route path="/">
+    //         <Main />
+    //       </Route>
+    //     </Switch>
+    //   </Router>
+    // </div>

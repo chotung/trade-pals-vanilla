@@ -1,12 +1,10 @@
-.nav {
+body, html {
   margin: 0;
 }
 
-.nav a h3 {
-  margin: 0;
-}
-
-.nav {
-  background: gray;
+.trade-pals-header {
+  -webkit-box-shadow: 0.05px 1px 18px rgba(160, 148, 148, 0.527);
+          box-shadow: 0.05px 1px 18px rgba(160, 148, 148, 0.527);
+  margin-bottom: 1.5rem;
 }
 /*# sourceMappingURL=App.css.map */
