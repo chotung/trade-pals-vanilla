@@ -1,17 +1,18 @@
 import React from 'react';
 
 const CartItem = (props) => {
-  const {cart, undoRemove} = props.cartObj
-  console.log(cart, undoRemove);
+  // console.log(props)
+  const {cart, undoRemove} = props
+  // console.log(cart, undoRemove);
   return (
     <div>
-      <h3>{cart[0].name}</h3>
+      <h3>{cart.name}</h3>
       <div>
-        <p>{cart[0].sex}</p>
-        <p>{cart[0].breed}</p>
-        <p>{cart[0].location}</p>
+        <p>{cart.sex}</p>
+        <p>{cart.breed}</p>
+        <p>{cart.location}</p>
       </div>
-      <p>{cart[0].price}</p>
+      <p>{cart.price}</p>
       <button>X</button>
     </div>
   );
