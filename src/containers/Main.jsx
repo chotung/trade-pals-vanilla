@@ -17,28 +17,9 @@ const Main = props => {
     const { pets } = props;
     const chosenPet = pets.filter(pet => pet.name === event.target.id);
     const availablePets = pets.filter(pet => pet.name !== event.target.id);
-    // console.log(chosenPet)
     removePetFromCatalogue(availablePets);
     addToCart(chosenPet[0]);
   };
-
-  // const makeCards = () => {
-  //   const { pets } = props;
-  //   return pets.map((pet, i) => {
-  //     return (
-  //       <Col
-  //         lg={3}
-  //         md={4}
-  //         sm={6}
-  //         xs={12}
-  //         key={i}
-  //         className="align-items-stretch  d-flex"
-  //       >
-  //         <PetCard key={i} addToCart={addingToCart} pet={pet} />
-  //       </Col>
-  //     );
-  //   });
-  // };
 
   const makeRows = () => {
     const { pets } = props;
@@ -49,7 +30,7 @@ const Main = props => {
           {row.map((pet, i) => {
             // console.log(pet)
             return (
-              <Col lg={3} md={6} sm={6} xs={12} key={i} h-100>
+              <Col lg={3} md={6} sm={6} xs={12} key={i} >
                 <PetCard key={i} addToCart={addingToCart} pet={pet} />
               </Col>
             );

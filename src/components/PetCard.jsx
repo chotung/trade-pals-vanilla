@@ -28,7 +28,7 @@ const PetCard = props => {
     <Form onSubmit={props.addToCart} id={pet.name} data={pet}>
       <Card className="pet-card" style={{ width: "100%" }}>
         <Card.Body className="pet-body">
-          <Card.Img className="pet-image" variant="top" src={`${pet.imgUrl}`} />
+          <Card.Img className="pet-image" variant="top" src={`${pet.imgUrl}`} alt={pet.name}/>
           <Card.Title>{pet.name}</Card.Title>
           <Card.Text>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.

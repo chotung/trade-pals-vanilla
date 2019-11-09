@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Container } from 'react-bootstrap'
 export default class DeliveryOptions extends Component {
   state = {
     shipping: true,
@@ -10,9 +10,9 @@ export default class DeliveryOptions extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         The container for total, shipping options, pickup 
-      </div>
+      </Container>
     )
   }
 }

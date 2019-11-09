@@ -1,44 +1,32 @@
-import React from 'react'
-import CartItem from '../components/CartItem';
-import DeliveryOptions from '../containers/DeliveryOptions'
-import { connect } from 'react-redux'
-import { Card } from 'react-bootstrap'
+import React from "react";
+import CartItem from "../components/CartItem";
+import DeliveryOptions from "../containers/DeliveryOptions";
+import { connect } from "react-redux";
+import { Container, Card, Col, Row } from "react-bootstrap";
 const mapStateToProps = state => {
   return {
     cartItems: state.shoppingCart
   };
-}
+};
 
-
-
-
-
-
-const ShoppingCart = (props) => {
-  // console.log(props)
-  
-
+const ShoppingCart = props => {
   const createCartItems = () => {
-    const { cartItems } = props
-    console.log(cartItems)
-    // Loop through that
-    // return the components
+    const { cartItems } = props;
     return cartItems.cart.map((cart, i) => {
-      return (
-        <Card key={i}>
-          <CartItem key={i} cart={cart} undoRemove={cartItems.undoRemove} />
-        </Card>
-      )
-    }) 
+      return <CartItem key={i} cart={cart} undoRemove={cartItems.undoRemove} />;
+    });
   };
 
   return (
-    <div>
-      {createCartItems()}
-      {/* <CartItem cartObj={props.cartItems} /> */}
-      <DeliveryOptions />
-    </div>
+    <Container fluid>
+      <Row>
+        <Col className="cart-col">{createCartItems()}</Col>
+        <Col xs lg="2" className="delivery-col">
+          <DeliveryOptions />
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default connect(mapStateToProps)(ShoppingCart);

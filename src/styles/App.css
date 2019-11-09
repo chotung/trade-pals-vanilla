@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   margin: 0;
 }
 
@@ -22,5 +23,30 @@ body, html {
   height: 30vw;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.delivery-col {
+  text-align: right;
+}
+
+.cart-item .card-header {
+  max-width: 250px;
+  min-width: 100px;
+}
+
+.cart-item .card-header h3 {
+  font-weight: bold;
+}
+
+.cart-item .card-header img {
+  max-width: 100px;
+  height: auto;
+  -o-object-fit: stretch;
+     object-fit: stretch;
+}
+
+.cart-item .info-block {
+  width: 100%;
+  padding: 10px;
 }
 /*# sourceMappingURL=App.css.map */
