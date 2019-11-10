@@ -44,9 +44,9 @@ const App = () => {
         <Route path="/shoppingcart">
           <ShoppingCart />
         </Route>
-        {/* <Route path="/">
-
-        </Route> */}
+        <Route path="/dashboard">
+          <div>dashboard</div>
+        </Route>
         <Route path="/">
           <Main />
         </Route>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Button, Form } from "react-bootstrap"
-
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -18,7 +18,12 @@ const PetCard = props => {
     <Form onSubmit={props.addToCart} id={pet.name} data={pet}>
       <Card className="pet-card" style={{ width: "100%" }}>
         <Card.Body className="pet-body">
-          <Card.Img className="pet-image" variant="top" src={`${pet.imgUrl}`} alt={pet.name}/>
+          <Card.Img
+            className="pet-image"
+            variant="top"
+            src={`${pet.imgUrl}`}
+            alt={pet.name}
+          />
           <Card.Title>{pet.name}</Card.Title>
           <Card.Text>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -27,7 +32,10 @@ const PetCard = props => {
           <Button variant="primary" type="submit" value="Submit">
             Add To Cart
           </Button>
-          <Button onClick={(e) => moreDetails(e)}>Learn More</Button>
+          {/* <Button onClick={(e) => moreDetails(e)}>Learn More</Button> */}
+          <NavLink to="/dashboard"> 
+          Dashboard 
+          </NavLink>
         </Card.Body>
       </Card>
     </Form>
