@@ -1,56 +1,47 @@
-import React from 'react';
-import About from './components/About'
-import Home from './components/Home'
-import Users from './components/Users'
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Main from "./containers/Main";
+import ShoppingCart from "./containers/ShoppingCart";
+import "./styles/App.css";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from "react-router-dom"
-import Topics from './components/Topics';
+  // Container,
+  // Row,
+  // Col,
+  Navbar,
+  Nav,
+  // NavDropdown,
+  Button
+} from "react-bootstrap";
 
 const App = () => {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-            <li>
-              <Link to="/topics">Topics</Link>
-            </li>
-          </ul>
-        </nav>
+      <Navbar className="trade-pals-header" bg="light" expand="lg">
+        <Link className="home" to="/">
+          Trade Pals
+        </Link>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/topics">
-            <Topics />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto"></Nav>
+          <Link className="cart" to="/shoppingcart">
+            <Button className="mr-sm-2" variant="outline-success" >
+              Cart
+            </Button>
+          </Link>
+        </Navbar.Collapse>
+      </Navbar>
+
+      <Switch>
+        <Route path="/shoppingcart">
+          <ShoppingCart />
+        </Route>
+        <Route path="/">
+          <Main />
+        </Route>
+      </Switch>
     </Router>
   );
-}
+};
 
 export default App;
