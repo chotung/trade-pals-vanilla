@@ -1,8 +1,8 @@
-const initialState = {
-  undoRemove: function() {
-    console.log("undo remove");
-  },
-  cart: [
+const initialState =
+  // undoRemove: function() {
+  //   console.log("undo remove");
+  // },
+  [
     {
       name: "leo",
       age: 10,
@@ -22,30 +22,27 @@ const initialState = {
       price: 3,
       breed: "Inu",
       isAvailable: false // temporary state should be used with model
+    },
+    {
+      name: "Rollly",
+      imgUrl:
+        "https://i2-prod.mirror.co.uk/incoming/article9109317.ece/ALTERNATES/s615/I161023_120243_10298636oTextTRMRMMGLPICT000103055634o.jpg",
+      sex: "Female",
+      age: 2,
+      location: "NYC",
+      price: 3,
+      breed: "Inu",
+      isAvailable: false // temporary state should be used with model
     }
-  ]
-};
+  ];
 
 const shoppingCart = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      return {
-        ...state,
-        cart: [...state.cart, action.payload]
-      };
+      return [...state, action.payload];
 
     case "REMOVE_CART_ITEM":
-      // remove from cart add
-      // add to undo array
-      //  - if undo is clicked we remove from pets
-      //  - readd to cart
-      // add back to pets
-      console.log(action.payload)
-      console.log("Remove from cart state");
-      return {
-        ...state,
-        cart: [...state.cart.filter(pet => { return pet !== action.payload})]
-      }
+      return [...action.payload];
 
     case "UNDO_REMOVE":
       console.log("undo remove to cart state");

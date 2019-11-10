@@ -4,27 +4,17 @@ import { Card, Button, Form } from "react-bootstrap"
 
 
 
-
 const PetCard = props => {
+
+  const moreDetails = event => {
+    console.log("pew pew");
+    console.log(props.pet);
+  };
+
+
   const { pet } = props;
-  // console.log(pet)
+  console.log(pet);
   return (
-    // <div className={`pet-${pet.name}`}>
-    //   <form onSubmit={props.addToCart} id={pet.name} data={pet}>
-    //     {pet.name}
-    //     {pet.sex}
-    //     {pet.age}
-    //     {pet.breed}
-    //     {pet.location}
-    //     {pet.price}
-    //     <button size="small" color="primary" type="submit" value="Submit">
-    //       Add To Cart
-    //     </button>
-    //     <button size="small" color="primary">
-    //       Learn More
-    //     </button>
-    //   </form>
-    // </div>
     <Form onSubmit={props.addToCart} id={pet.name} data={pet}>
       <Card className="pet-card" style={{ width: "100%" }}>
         <Card.Body className="pet-body">
@@ -37,7 +27,7 @@ const PetCard = props => {
           <Button variant="primary" type="submit" value="Submit">
             Add To Cart
           </Button>
-          <Button>Learn More</Button>
+          <Button onClick={(e) => moreDetails(e)}>Learn More</Button>
         </Card.Body>
       </Card>
     </Form>
@@ -45,3 +35,6 @@ const PetCard = props => {
 };
 
 export default PetCard;
+// Click pet image or learn more 
+// How do i go to more details
+// Goes to the pet details

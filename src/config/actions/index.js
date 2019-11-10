@@ -1,18 +1,25 @@
 import store from '../store'
 
 //ACTIONS
-const REMOVE_PET_FROM_CATALOGUE = 'REMOVE_PET_FROM_CATALOGUE'
-const ADD_TO_CART = 'ADD_TO_CART'
+const REMOVE_PET_FROM_CATALOGUE = "REMOVE_PET_FROM_CATALOGUE"
+const ADD_TO_CART = "ADD_TO_CART"
 const REMOVE_CART_ITEM = "REMOVE_CART_ITEM";
-// const REMOVED_FROM_CART = 'REMOVED_FROM_CART'
-// const UNDO_REMOVE = 'UNDO_REMOVE'
+const ADD_PET_TO_CATALOGUE = "ADD_PET_TO_CATALOGUE";
 
 
 // PET ACTIONS
-export const removePetFromCatalogue = (pets) => {
+export const removePetFromCatalogue = (pet) => {
   store.dispatch({
     type: REMOVE_PET_FROM_CATALOGUE,
-    payload: pets
+    payload: pet
+  })
+}
+
+
+export const addPetToCatalogue = (pet) => {
+  store.dispatch({
+    type: ADD_PET_TO_CATALOGUE,
+    payload: pet
   })
 }
 
@@ -34,3 +41,4 @@ export const removeCartItem = (pet) => {
     payload: pet
   })
 }
+
