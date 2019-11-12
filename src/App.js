@@ -8,6 +8,7 @@ import {
   Nav,
   Button
 } from "react-bootstrap";
+import PetPage from "./containers/PetPage";
 // import { connect } from "react-redux"
 
 
@@ -44,8 +45,8 @@ const App = () => {
         <Route path="/shoppingcart">
           <ShoppingCart />
         </Route>
-        <Route path="/dashboard">
-          <div>dashboard</div>
+        <Route path="/petpage">
+          <PetPage />
         </Route>
         <Route path="/">
           <Main />
