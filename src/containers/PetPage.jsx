@@ -1,30 +1,15 @@
-import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
 
-const PetPage = () => {
-  let selectedCardId = localStorage.getItem("selectedCard");
-  console.log('hitting the pet page')
-  console.log(selectedCardId)
-  return (
-    <div>
-      This is the pet page
-    </div>
-  );
-}
+const mapStateToProps = state => {
+  return {
+    pet: state.petCard
+  };
+};
 
-export default PetPage;
+const PetPage = props => {
+  const { pet } = props
+  return <div>This is the pet page</div>;
+};
 
-
-
-// import React, { Component } from 'react'
-
-// export default class PetPage extends Component {
-//   render() {
-//     let selectedCardId = localStorage.getItem("selectedCard");
-//     console.log(selectedCardId)
-//     return (
-//       <div>
-//         Pet Details
-//       </div>
-//     )
-//   }
-// }
+export default connect(mapStateToProps)(PetPage);

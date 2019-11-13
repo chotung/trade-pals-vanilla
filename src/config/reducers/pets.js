@@ -56,13 +56,12 @@ const initialState = [
   },
   {
     name: "Ben",
+    breed: "pug",
     imgUrl:
-      "https://www.rover.com/blog/wp-content/uploads/2019/07/maltese-puppy-960x540.jpg",
-    sex: "Female",
-    age: 1,
-    location: "MD",
-    price: "priceless",
-    breed: "Maltese",
+      "https://secure.img1-fg.wfcdn.com/im/53299221/compr-r85/4307/43074449/hanging-pug-puppy-statue.jpg",
+    price: 10,
+    location: "Texas",
+    sex: "male",
     isAvailable: true
   },
   {
