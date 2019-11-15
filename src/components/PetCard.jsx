@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Button, Form } from "react-bootstrap";
-// import { NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { addToPetCard } from "../config/actions";
 
@@ -28,11 +27,20 @@ const PetCard = props => {
             Voluptatem, totam?
           </Card.Text>
           <span>
-            <Button variant="primary" type="submit" value="Submit">
+            <Button
+              className="pet-button"
+              variant="primary"
+              type="submit"
+              value="Submit"
+            >
               Add To Cart
             </Button>
-            <Button onClick={() => goToCardDetails(pet)}>Learn More</Button>
-            {/* <NavLink to="/dashboard">More Details</NavLink> */}
+            <Button 
+              className="pet-button" 
+              onClick={() => goToCardDetails(pet)}
+            >
+              Learn More
+            </Button>
           </span>
         </Card.Body>
       </Card>
