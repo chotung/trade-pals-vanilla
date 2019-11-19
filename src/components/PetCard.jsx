@@ -61,7 +61,7 @@ class PetCard extends Component {
             />
             <Card.Title>{pet.name}</Card.Title>
             <Card.Text onClick={() => this.flip()}>
-              {this.truncate(desc)}
+              {this.state.truncated ? this.truncate(desc) : desc }
               {pet.price}
             </Card.Text>
             <span>
