@@ -1,53 +1,89 @@
-import React from "react";
+import React, { Component } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import { addToPetCard } from "../config/actions";
 
-const PetCard = props => {
-  const goToCardDetails = cardId => {
-    addToPetCard(cardId);
-    props.history.push(`/petpage/${cardId.name}`);
-  };
-  const desc = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, totam?"
-  const { pet } = props;
+class PetCard extends Component {
+  // const PetCard = props => {
 
-  const truncate = str => {
+  state = {
+    truncated: true
+  };
+  goToCardDetails = cardId => {
+    addToPetCard(cardId);
+    this.props.history.push(`/petpage/${cardId.name}`);
+  };
+  
+  truncate = str => {
     return str.length > 10 ? str.substring(0, 7) + "..." : str;
   };
 
-  return (
-    <Form onSubmit={props.addToCart} id={pet.name} data={pet}>
-      <Card className="pet-card" style={{ width: "100%" }}>
-        <Card.Body className="pet-body">
-          <Card.Img
-            className="pet-image"
-            variant="top"
-            src={`${pet.imgUrl}`}
-            alt={pet.name}
-            onClick={() => goToCardDetails(pet)}
-          />
-          <Card.Title>{pet.name}</Card.Title>
-          <Card.Text>
-            {truncate(desc)}
-            {pet.price}
-          </Card.Text>
-          <span>
-            <Button
-              className="pet-button"
-              variant="primary"
-              type="submit"
-              value="Submit"
-            >
-              Add To Cart
-            </Button>
-            <Button className="pet-button" onClick={() => goToCardDetails(pet)}>
-              Learn More
-            </Button>
-          </span>
-        </Card.Body>
-      </Card>
-    </Form>
-  );
-};
+  flip = () => {
+    this.setState( prevState => {
+      return {
+        truncated: !prevState.truncated
+      }
+    })
+  };
 
+  render() {
+    const { pet } = this.props;
+    const desc =
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, totam?";
+
+    // const goToCardDetails = cardId => {
+    //   addToPetCard(cardId);
+    //   this.props.history.push(`/petpage/${cardId.name}`);
+    // };
+    // const desc =
+    //   "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, totam?";
+    // const { pet } = this.props;
+
+    // const truncate = str => {
+    //   return str.length > 10 ? str.substring(0, 7) + "..." : str;
+    // };
+
+    // const flip = () => {
+    //   console.log("Hello World");
+    // };
+
+    console.log(this.state);
+    return (
+      <Form onSubmit={this.props.addToCart} id={pet.name} data={pet}>
+        <Card className="pet-card" style={{ width: "100%" }}>
+          <Card.Body className="pet-body">
+            <Card.Img
+              className="pet-image"
+              variant="top"
+              src={`${pet.imgUrl}`}
+              alt={pet.name}
+              onClick={() => this.goToCardDetails(pet)}
+            />
+            <Card.Title>{pet.name}</Card.Title>
+            <Card.Text onClick={() => this.flip()}>
+              {this.truncate(desc)}
+              {pet.price}
+            </Card.Text>
+            <span>
+              <Button
+                className="pet-button"
+                variant="primary"
+                type="submit"
+                value="Submit"
+              >
+                Add To Cart
+              </Button>
+              <Button
+                className="pet-button"
+                onClick={() => this.goToCardDetails(pet)}
+              >
+                Learn More
+              </Button>
+            </span>
+          </Card.Body>
+        </Card>
+      </Form>
+    );
+  }
+}
 export default withRouter(PetCard);
