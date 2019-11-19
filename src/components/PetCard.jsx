@@ -8,14 +8,17 @@ const PetCard = props => {
     addToPetCard(cardId);
     props.history.push(`/petpage/${cardId.name}`);
   };
-
+  const desc = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, totam?"
   const { pet } = props;
+
+  const truncate = str => {
+    return str.length > 10 ? str.substring(0, 7) + "..." : str;
+  };
 
   return (
     <Form onSubmit={props.addToCart} id={pet.name} data={pet}>
       <Card className="pet-card" style={{ width: "100%" }}>
         <Card.Body className="pet-body">
-
           <Card.Img
             className="pet-image"
             variant="top"
@@ -25,8 +28,7 @@ const PetCard = props => {
           />
           <Card.Title>{pet.name}</Card.Title>
           <Card.Text>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Voluptatem, totam?
+            {truncate(desc)}
             {pet.price}
           </Card.Text>
           <span>
@@ -38,10 +40,7 @@ const PetCard = props => {
             >
               Add To Cart
             </Button>
-            <Button 
-              className="pet-button" 
-              onClick={() => goToCardDetails(pet)}
-            >
+            <Button className="pet-button" onClick={() => goToCardDetails(pet)}>
               Learn More
             </Button>
           </span>
