@@ -28,6 +28,7 @@ class PetCard extends Component {
 
   render() {
     const { pet } = this.props;
+    const { truncated } = this.state
     const desc =
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, totam?";
 
@@ -47,7 +48,6 @@ class PetCard extends Component {
     //   console.log("Hello World");
     // };
 
-    console.log(this.state);
     return (
       <Form onSubmit={this.props.addToCart} id={pet.name} data={pet}>
         <Card className="pet-card" style={{ width: "100%" }}>
@@ -61,7 +61,7 @@ class PetCard extends Component {
             />
             <Card.Title>{pet.name}</Card.Title>
             <Card.Text onClick={() => this.flip()}>
-              {this.state.truncated ? this.truncate(desc) : desc }
+              {truncated ? this.truncate(desc) : desc }
               {pet.price}
             </Card.Text>
             <span>
