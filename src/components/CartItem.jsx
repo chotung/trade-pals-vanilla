@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Button, Form } from "react-bootstrap";
-// import { removeCartItem } from "../config/actions";
+import { addToPetCard } from "../config/actions";
+import { withRouter } from "react-router-dom";
 
 const capitalize = word => {
   if (typeof word !== "string") return "";
@@ -8,17 +9,27 @@ const capitalize = word => {
 };
 
 const CartItem = props => {
-  console.log(props)
+  const goToCardDetails = cardId => {
+    addToPetCard(cardId);
+    props.history.push(`/petpage/${cardId.name}`);
+  };
+
+  console.log(props);
   const { cart } = props;
   // console.log(cart);
   // console.log(cart, undoRemove);
   return (
     <Form onSubmit={props.removeFromCart} id={cart.name} data={cart}>
-      <Card bg="light" className="cart-item flex-row">
+      <Card bg="light"className="cart-item flex-row">
         <div className="border-bottom-0 border-right card-header">
           <h3>{capitalize(cart.name)}</h3>
           {/* <img src={cart.imgUrl} alt={cart.name} /> */}
-          <Card.Img variant="top" src={cart.imgUrl} alt={cart.name} />
+          <Card.Img
+            onClick={() => goToCardDetails(cart)}
+            variant="top"
+            src={cart.imgUrl}
+            alt={cart.name}
+          />
         </div>
         <div className="info-block">
           <div className="info-list">
@@ -32,13 +43,15 @@ const CartItem = props => {
           </div>
           <p>{cart.price}</p>
         </div>
-        <Button variant="danger" type="submit" value="Submit">X</Button>
+        <Button variant="danger" type="submit" value="Submit">
+          X
+        </Button>
       </Card>
     </Form>
   );
 };
 
-export default CartItem;
+export default withRouter(CartItem);
 
 // Need to iterate over all the cart items
 // Button Should remove the pet

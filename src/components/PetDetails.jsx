@@ -2,24 +2,19 @@ import React from "react";
 import { Col, Row, Image } from "react-bootstrap";
 
 const PetDetails = props => {
-  console.log(props.petData);
+  // console.log(props.petData);
   const { name, imgUrl } = props.petData.pet;
   return (
     <Row className="pet-detail-row">
-      <Col className="col-6" xs="12" sm="3">
+      <Col className="" xs="12">
         <Row noGutters>
-          {/* <Col>
-            shrink the images
-            <Image fluid src={imgUrl} alt="other-pics" />
-          </Col> */}
           <Col xs="12">
-            <Image className="pet-detail-image" src={imgUrl} alt={name} />
+            <Image rounded className="pet-detail-image" src={imgUrl} alt={name} />
           </Col>
         </Row>
       </Col>
-      {/* <Col className="col-12 col-sm-3 col-md-3 col-lg-3">Description</Col>
-      <Col className="col-12 col-sm-3 col-md-3 col-lg-3">ads or something</Col> */}
-      <Col xs="12" sm="3">
+      <Col xs="12">
+        The Description - 
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet id
         repudiandae consequatur tempora ratione eius quisquam ab. Dolorum,
         aliquam architecto?Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -35,9 +30,9 @@ const PetDetails = props => {
         aperiam accusamus delectus adipisci eligendi laudantium voluptatum
         dolorum id illum veritatis suscipit maxime vel quam nulla!
       </Col>
-      <Col className="buy" xs="12" sm="3">
+      {/* <Col className="buy" xs="12" sm="3">
         ads or something
-      </Col>
+      </Col> */}
     </Row>
   );
 };

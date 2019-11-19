@@ -28,11 +28,11 @@ const Main = props => {
     const splitArray = chunckArray(pets, 4);
     return splitArray.map((row, key) => {
       return (
-        <Row className="pet-row" key={key}>
+        <Row style={{  margin: "0" }} className="pet-row" key={key}>
           {row.map((pet, i) => {
             // console.log(pet)
             return (
-              <Col lg={3} md={6} sm={6} xs={12} key={i} >
+              <Col xl={3} lg={3} md={6} sm={6} xs={12} key={i}  style={{ marginBottom: "1rem", padding: "0 8px"}}>
                 <PetCard key={i} addToCart={addingToCart} pet={pet} />
               </Col>
             );

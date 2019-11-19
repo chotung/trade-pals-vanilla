@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 // import PetCard from "../components/PetCard"
 // import CartItem from "../components/CartItem";
 import PetDetails from "../components/PetDetails";
+import Review from "../components/Review";
+import BuyingOptions from "../components/BuyingOptions";
 
 const mapStateToProps = state => {
   return {
@@ -12,15 +14,21 @@ const mapStateToProps = state => {
 };
 
 const PetPage = props => {
-  const { pet } = props;
+  // const { pet } = props;
   // console.log(pet);
   return (
     <Container fluid className="pet-details">
       <PetDetails petData={props} />
-      <Row>Row 2</Row>
       <Row>
-        <Card>Reviews</Card>
+        <Col>
+          <Review />
+        </Col>
       </Row>
+      <Row>
+        <Col>
+          <BuyingOptions />
+        </Col>
+      </Row> 
     </Container>
   );
 };
