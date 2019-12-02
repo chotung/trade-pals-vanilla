@@ -13,18 +13,14 @@ const mapStateToProps = state => {
 
 const ShoppingCart = props => {
   const removeFromCart = event => {
-    // console.log( props.cartItems.cart);
     event.preventDefault();
     const { cartItems } = props;
-    console.log(cartItems);
     const removePet = cartItems.filter(
       removedPet => removedPet.name === event.target.id
     );
-    // console.log("removePet", removePet);
     const available = cartItems.filter(
       cartPet => cartPet.name !== event.target.id
     );
-    // console.log("available", available);
 
     addPetToCatalogue(removePet[0]);
     removeCartItem(available);
@@ -32,7 +28,6 @@ const ShoppingCart = props => {
 
   const createCartItems = () => {
     const { cartItems } = props;
-    // console.log("cartItems", cartItems)
     return cartItems.map((cart, i) => {
       return <CartItem key={i} cart={cart} removeFromCart={removeFromCart} />;
     });

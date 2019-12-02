@@ -14,8 +14,6 @@ const mapStateToProps = state => {
 };
 
 const PetPage = props => {
-  // const { pet } = props;
-  // console.log(pet);
   return (
     <Container fluid className="pet-details">
       <PetDetails petData={props} />

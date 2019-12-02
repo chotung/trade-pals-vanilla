@@ -15,7 +15,7 @@ class PetCard extends Component {
   };
   
   truncate = str => {
-    return str.length > 10 ? str.substring(0, 7) + "..." : str;
+    return str.length > 10 ? str.substring(0, 25) + "..." : str;
   };
 
   flip = () => {
@@ -36,9 +36,6 @@ class PetCard extends Component {
     //   addToPetCard(cardId);
     //   this.props.history.push(`/petpage/${cardId.name}`);
     // };
-    // const desc =
-    //   "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, totam?";
-    // const { pet } = this.props;
 
     // const truncate = str => {
     //   return str.length > 10 ? str.substring(0, 7) + "..." : str;

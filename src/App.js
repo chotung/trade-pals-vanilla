@@ -3,14 +3,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Main from "./containers/Main";
 import ShoppingCart from "./containers/ShoppingCart";
 import "./styles/App.css";
-import {
-  Navbar,
-  Nav,
-  Button
-} from "react-bootstrap";
+import { Navbar, Nav, Button } from "react-bootstrap";
 import PetPage from "./containers/PetPage";
-// import { connect } from "react-redux"
+import Home from "./containers/Home"
 
+// import { connect } from "react-redux"
 
 // const mapStateToProps = state => {
 //   return {
@@ -18,7 +15,6 @@ import PetPage from "./containers/PetPage";
 //     cart: state.shoppingCart
 //   }
 // }
-
 
 // const App = (props) => {
 const App = () => {
@@ -32,6 +28,7 @@ const App = () => {
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+          <Link to="/index/pets">All Pets</Link>
           <Nav className="mr-auto"></Nav>
           <Link className="cart" to="/shoppingcart">
             <Button className="mr-sm-2" variant="outline-success">
@@ -42,6 +39,9 @@ const App = () => {
       </Navbar>
 
       <Switch>
+        <Route path="/index/pets">
+          <Main />
+        </Route>
         <Route path="/shoppingcart">
           <ShoppingCart />
         </Route>
@@ -49,12 +49,13 @@ const App = () => {
           <PetPage />
         </Route>
         <Route path="/">
-          <Main />
+          <Home />
         </Route>
       </Switch>
+      <footer>This is my footer</footer>
     </Router>
   );
 };
 
 // export default connect(mapStateToProps)(App);
-export default (App);
+export default App;

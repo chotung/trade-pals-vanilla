@@ -2,10 +2,41 @@
   // border: solid 1px black;
 }
 
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
 body,
 html {
   margin: 0;
 }
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  color: white;
+  background-color: #1D3159;
+  text-align: center;
+}
+
 .trade-pals-header {
   box-shadow: 0.05px 1px 18px rgba(160, 148, 148, 0.527);
   margin-bottom: 1.5rem;
@@ -33,11 +64,11 @@ html {
   text-align: right;
 }
 
-.cart-item, .review-item {
+.cart-item,
+.review-item {
   .card-header {
     max-width: 250px;
     min-width: 100px;
-    // max-height: 250px;
     h3 {
       font-weight: bold;
     }
@@ -54,13 +85,11 @@ html {
   }
 }
 
-
 .pet-detail-row {
   .col {
     width: 100%;
   }
   .buy {
-    // text-align: right;
   }
   .pet-detail-image {
     display: block;
@@ -69,3 +98,9 @@ html {
     max-width: 100%;
   }
 }
+
+
+.carousel-item {
+  max-height: 740px;
+}
+

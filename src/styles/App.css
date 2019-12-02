@@ -1,6 +1,38 @@
+html {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
 body,
 html {
   margin: 0;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  color: white;
+  background-color: #1D3159;
+  text-align: center;
 }
 
 .trade-pals-header {
@@ -34,23 +66,27 @@ html {
   text-align: right;
 }
 
-.cart-item .card-header, .review-item .card-header {
+.cart-item .card-header,
+.review-item .card-header {
   max-width: 250px;
   min-width: 100px;
 }
 
-.cart-item .card-header h3, .review-item .card-header h3 {
+.cart-item .card-header h3,
+.review-item .card-header h3 {
   font-weight: bold;
 }
 
-.cart-item .card-header img, .review-item .card-header img {
+.cart-item .card-header img,
+.review-item .card-header img {
   max-width: 100px;
   height: auto;
   -o-object-fit: stretch;
      object-fit: stretch;
 }
 
-.cart-item .info-block, .review-item .info-block {
+.cart-item .info-block,
+.review-item .info-block {
   width: 100%;
   padding: 10px;
 }
@@ -64,5 +100,9 @@ html {
   margin: auto;
   max-height: 500px;
   max-width: 100%;
+}
+
+.carousel-item {
+  max-height: 740px;
 }
 /*# sourceMappingURL=App.css.map */
