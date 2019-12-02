@@ -28,7 +28,7 @@ const App = () => {
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Link to="/index/pets">All Pets</Link>
+          <Link className="index-pet" to="/index/pets">All Pets</Link>
           <Nav className="mr-auto"></Nav>
           <Link className="cart" to="/shoppingcart">
             <Button className="mr-sm-2" variant="outline-success">

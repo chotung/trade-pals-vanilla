@@ -41,6 +41,14 @@ footer {
   margin-bottom: 1.5rem;
 }
 
+.trade-pals-header .home {
+  margin: 0 .5rem;
+}
+
+.trade-pals-header .index-pet {
+  margin: 0 .5rem;
+}
+
 .pet-card {
   height: 100%;
 }
