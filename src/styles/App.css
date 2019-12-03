@@ -14,7 +14,6 @@ html {
 body {
   position: relative;
   margin: 0;
-  padding-bottom: 6rem;
   min-height: 100%;
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
@@ -24,21 +23,21 @@ html {
   margin: 0;
 }
 
-footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  color: white;
-  background-color: #1D3159;
-  text-align: center;
+#root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .trade-pals-header {
   -webkit-box-shadow: 0.05px 1px 18px rgba(160, 148, 148, 0.527);
           box-shadow: 0.05px 1px 18px rgba(160, 148, 148, 0.527);
-  margin-bottom: 1.5rem;
+  margin-bottom: .75rem;
 }
 
 .trade-pals-header .home {
@@ -112,5 +111,84 @@ footer {
 
 .carousel-item {
   max-height: 740px;
+}
+
+.homepage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.homepage .home-row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.homepage .featured-pet {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  background-color: #3283a8;
+}
+
+.homepage .content-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: royalblue;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.homepage .content-header .home-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.container-fluid:not(.footer) {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.footer {
+  padding: 1rem;
+  color: white;
+  background-color: #1D3159;
+  text-align: center;
+  width: 100%;
 }
 /*# sourceMappingURL=App.css.map */

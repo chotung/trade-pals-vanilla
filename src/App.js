@@ -6,6 +6,7 @@ import "./styles/App.css";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import PetPage from "./containers/PetPage";
 import Home from "./containers/Home"
+import Footer from "./containers/Footer"
 
 // import { connect } from "react-redux"
 
@@ -52,7 +53,7 @@ const App = () => {
           <Home />
         </Route>
       </Switch>
-      <footer>This is my footer</footer>
+      <Footer/>
     </Router>
   );
 };
