@@ -40,7 +40,8 @@ html {
 
 .trade-pals-header {
   box-shadow: 0.05px 1px 18px rgba(160, 148, 148, 0.527);
-  margin-bottom: .75rem;
+  // margin-bottom: .75rem;
+  margin-bottom: 3rem;
   .home {
     margin: 0 .5rem;
   }
@@ -107,9 +108,9 @@ html {
 }
 
 
-.carousel-item {
-  max-height: 740px;
-}
+// .carousel-item {
+//   max-height: 740px;
+// }
 
 
 .homepage {
@@ -123,11 +124,12 @@ html {
     flex-direction: column;
   }
   .featured-pet {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    // height: 100%;
+    // width: auto;
+    // display: flex;
+    // flex-direction: row;
     // align-items: center;
-    text-align: center;
+    // text-align: center;
     background-color: rgb(50, 131, 168);
   }
   .content-header  {
