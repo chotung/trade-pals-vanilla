@@ -1,5 +1,5 @@
-$shadow-color: rgba(160, 148, 148, 0.527);
-
+$shadow-color: rgba(160, 148, 148, 0.795);
+$shadow-colorPurple: rgba(12, 2, 97, 0.363);
 // * {
   // border: solid 1px black;
 // }
@@ -36,12 +36,14 @@ html {
   flex-direction: column;
 }
 
-
+.featured-card {
+  margin: 1rem 0;
+}
 
 .trade-pals-header {
-  box-shadow: 0.05px 1px 18px rgba(160, 148, 148, 0.527);
-  // margin-bottom: .75rem;
-  margin-bottom: 3rem;
+  box-shadow: 0.05px 1px 18px $shadow-colorPurple;
+  margin-bottom: .75rem;
+  // margin-bottom: 3rem;
   .home {
     margin: 0 .5rem;
   }
@@ -107,12 +109,6 @@ html {
   }
 }
 
-
-// .carousel-item {
-//   max-height: 740px;
-// }
-
-
 .homepage {
   display: flex;
   flex-direction: column;
@@ -131,12 +127,13 @@ html {
     // align-items: center;
     // text-align: center;
     background-color: rgb(50, 131, 168);
+
   }
   .content-header  {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: royalblue;
+    color: white;
     justify-content: center;
     .home-text {
       position: absolute;  
@@ -152,7 +149,6 @@ html {
   flex: 1;
 }
 
-
 .footer {
   padding: 1rem;
   color: white;
@@ -160,3 +156,40 @@ html {
   text-align: center;
   width: 100%;
 }
+
+
+
+.swiper-container {
+  box-shadow: 0px 10px 10px rgba(12, 2, 97, 0.363);
+  border-radius: 30px;
+  width: 100%;
+  height: 500px;
+  background: black;
+  color: white;
+  img {
+    width: 100%;
+    // height: max-content;
+    height: auto;
+  }
+  .home-text {
+      position: absolute;  
+      left: 50%;                        
+      top: 50%;                         
+      transform: translate(-50%, -50%)
+  }
+}
+
+
+
+// .yourFluidImage {
+//   width:100%;
+//   height:auto;
+// }
+
+// .swiper-wrapper {
+//   height:auto !important;
+// }
+
+// .swiper-slide {
+//   height:auto !important;
+// }

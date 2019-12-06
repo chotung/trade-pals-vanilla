@@ -34,10 +34,14 @@ html {
           flex-direction: column;
 }
 
+.featured-card {
+  margin: 1rem 0;
+}
+
 .trade-pals-header {
-  -webkit-box-shadow: 0.05px 1px 18px rgba(160, 148, 148, 0.527);
-          box-shadow: 0.05px 1px 18px rgba(160, 148, 148, 0.527);
-  margin-bottom: 3rem;
+  -webkit-box-shadow: 0.05px 1px 18px rgba(12, 2, 97, 0.363);
+          box-shadow: 0.05px 1px 18px rgba(12, 2, 97, 0.363);
+  margin-bottom: .75rem;
 }
 
 .trade-pals-header .home {
@@ -151,7 +155,7 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: royalblue;
+  color: white;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -177,5 +181,28 @@ html {
   background-color: #1D3159;
   text-align: center;
   width: 100%;
+}
+
+.swiper-container {
+  -webkit-box-shadow: 0px 10px 10px rgba(12, 2, 97, 0.363);
+          box-shadow: 0px 10px 10px rgba(12, 2, 97, 0.363);
+  border-radius: 30px;
+  width: 100%;
+  height: 500px;
+  background: black;
+  color: white;
+}
+
+.swiper-container img {
+  width: 100%;
+  height: auto;
+}
+
+.swiper-container .home-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 /*# sourceMappingURL=App.css.map */

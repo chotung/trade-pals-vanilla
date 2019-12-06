@@ -1,49 +1,112 @@
-import React from 'react';
-import { Carousel, Image } from 'react-bootstrap'
-const PetSlideShow = () => {
-  return (
-    <Carousel>
-      <Carousel.Item>
-        <Image
-          fluid
-          className="d-block w-100"
-          src="https://images.unsplash.com/photo-1535741172595-554e8601ffb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-          alt="First slide"
-        />
-        <Carousel.Caption className="d-flex h-100 align-items-center justify-content-center">
-          <h3>First slide label</h3>
-          <p>Please Adopt...</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      
-      <Carousel.Item>
-        <Image
-          fluid
-          className="d-block w-100"
-          src="https://images.unsplash.com/photo-1521247560470-d2cbfe2f7b47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-          alt="Third slide"
-        />
+import React from "react";
+import { Carousel, Image } from "react-bootstrap";
+import Swiper from "react-id-swiper";
+import "swiper/css/swiper.css";
+import { connect } from "react-redux"
 
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>This could be you</p>
-        </Carousel.Caption>
-      </Carousel.Item>
 
-      <Carousel.Item>
-        <Image
-          fluid
-          className="d-block w-100"
-          src="https://images.unsplash.com/photo-1470390356535-d19bbf47bacb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-          alt="Third slide"
-        />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>You Never Know Who Can Change Your Life...</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-  );
+const mapStateToProps = (state) => {
+  return {
+    pets: state.pets
+  }
 }
 
-export default PetSlideShow;
+
+
+
+const PetSlideShow = (props) => {
+  const params = {
+    autoHeight: true,
+    calculateHeight: true,
+    autoplay: {
+      delay: 3000
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    spaceBetween: 30,
+    effect: "fade"
+  };
+  return (
+    <Swiper {...params}>
+      <div>
+        <div className="slide-content">
+          <Image
+            src="https://images.unsplash.com/photo-1559284957-298b8b225576?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+            alt="front-page"
+          />
+          <div className="home-text">
+            <h1 className="content-title">Trade Pals</h1>
+            <p className="content-description">
+              Where Furry Strangers Become Family
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="slide-content">
+          <Image
+            src={props.pets[1].imgUrl}
+            alt="front-page"
+          />
+          <div className="home-text">
+            <h1 className="content-title">Trade Pals</h1>
+            <p className="content-description">
+              Where Furry Strangers Become Family
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="slide-content">
+          <Image
+            src={props.pets[3].imgUrl}
+            alt="front-page"
+          />
+          <div className="home-text">
+            <h1 className="content-title">Trade Pals</h1>
+            <p className="content-description">
+              Where Furry Strangers Become Family
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="slide-content">
+          <Image
+            src={props.pets[2].imgUrl}
+            alt="front-page"
+          />
+          <div className="home-text">
+            <h1 className="content-title">Trade Pals</h1>
+            <p className="content-description">
+              Where Furry Strangers Become Family
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="slide-content">
+          <Image
+            src={props.pets[5].imgUrl}
+            alt="front-page"
+          />
+          <div className="home-text">
+            <h1 className="content-title">Trade Pals</h1>
+            <p className="content-description">
+              Where Furry Strangers Become Family
+            </p>
+          </div>
+        </div>
+      </div>
+    </Swiper>
+  );
+};
+
+export default connect(mapStateToProps)(PetSlideShow);

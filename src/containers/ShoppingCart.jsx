@@ -37,7 +37,7 @@ const ShoppingCart = props => {
     <Container fluid>
       <Row>
         <Col className="cart-col">{createCartItems()}</Col>
-        <Col xs lg="2" className="delivery-col">
+        <Col lg="2" className="delivery-col">
           <DeliveryOptions />
         </Col>
       </Row>
