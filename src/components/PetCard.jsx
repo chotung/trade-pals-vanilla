@@ -31,20 +31,6 @@ class PetCard extends Component {
     const { truncated } = this.state
     const desc =
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem, totam?";
-
-    // const goToCardDetails = cardId => {
-    //   addToPetCard(cardId);
-    //   this.props.history.push(`/petpage/${cardId.name}`);
-    // };
-
-    // const truncate = str => {
-    //   return str.length > 10 ? str.substring(0, 7) + "..." : str;
-    // };
-
-    // const flip = () => {
-    //   console.log("Hello World");
-    // };
-
     return (
       <Form onSubmit={this.props.addToCart} id={pet.name} data={pet}>
         <Card className="pet-card" style={{ width: "100%" }}>
