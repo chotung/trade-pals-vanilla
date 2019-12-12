@@ -36,7 +36,7 @@ html {
   flex-direction: column;
 }
 
-.featured-card {
+.featured-card-col {
   margin: 1rem 0;
 }
 
@@ -120,12 +120,6 @@ html {
     flex-direction: column;
   }
   .featured-pet {
-    // height: 100%;
-    // width: auto;
-    // display: flex;
-    // flex-direction: row;
-    // align-items: center;
-    // text-align: center;
     background-color: rgb(50, 131, 168);
 
   }

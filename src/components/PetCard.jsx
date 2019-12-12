@@ -57,7 +57,7 @@ class PetCard extends Component {
               onClick={() => this.goToCardDetails(pet)}
             />
             <Card.Title>{pet.name}</Card.Title>
-            <Card.Text onClick={() => this.flip()}>
+            <Card.Text onClick={this.flip}>
               {truncated ? this.truncate(desc) : desc }
               {pet.price}
             </Card.Text>
