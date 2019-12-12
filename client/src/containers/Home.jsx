@@ -50,21 +50,19 @@ class Home extends React.Component {
     return (
       <Container fluid className="homepage p-0">
         {/* Opening Image */}
-        <Col style={{ textAlign: "center", padding: ".5rem" }}>
-            <h1>Featured Pet</h1>
-          </Col>
-        <Row className="home-row">
+        <h1>Featured Pet</h1>
+
+        {/* <Row className="home-row">
           <Col>
             <PetSlideShow />
           </Col>
-          <Col className="home-col-header p-0"></Col>
-        </Row>
+        </Row> */}
 
         {/* Featured Pet */}
         {/* <Row style={{ width: "100%" }}>
           
           <Col className="featured-card-col" lg={12}> */}
-            {/* <Card bg="light" className="">
+        {/* <Card bg="light" className="">
               <div className="border-bottom-0 border-right card-header">
                 <Card.Img
                   className="featured-card"
@@ -96,7 +94,7 @@ class Home extends React.Component {
                 </div>
               </div>
             </Card> */}
-          {/* </Col>
+        {/* </Col>
         </Row> */}
       </Container>
     );
