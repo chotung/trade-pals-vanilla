@@ -3,13 +3,14 @@ const path = require("path");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 const app = express();
+require('dotenv').config()
 
 app.use(express.urlencoded({
   extended: true
 }));
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://choeles:lily69@ds253418.mlab.com:53418/trade_pals_db", {
+mongoose.connect(process.env.MONGODB_URI || `mongodb://${process.env.DB_USER}:${process.env.DB_PW}@ds253418.mlab.com:53418/trade_pals_db`, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
@@ -29,11 +30,15 @@ if (process.env.NODE_ENV === "production") {
 
 app.use("/api", require("./routes/userRoutes.js"));
 
+app.get("/", (req, res) => {
+  res.send("Welcome to your home page")
+})
+
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}!`);
