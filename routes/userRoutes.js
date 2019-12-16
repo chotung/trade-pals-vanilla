@@ -14,7 +14,7 @@ router.get("/users", async (req, res) => {
 router.post("/users", async (req, res) => {
   const { username, email, password, bio, image } = req.body
   try {
-    const user = new User({
+    const user = await new User({
       username,
       email
     }) 
@@ -25,5 +25,33 @@ router.post("/users", async (req, res) => {
     
   }
 })
+
+
+router.put("/users/:id", async (req, res) => {
+ try {
+   const updateUser = await User.findOneAndUpdate
+ } catch (error) {
+   
+ } 
+})
+
+
+router.delete("/users/:id", async (req, res) => {
+  // How do I actually want to delete my account????
+  try {
+    User.findOneAndDelete({_id:req.params.id}, (err, data) => {
+      if(data) {
+        res.json({ message: "Your Account Has Been Deleted"})
+      } else {
+        res.json({ message: "Account does not exist"})
+      }
+    })
+  } catch (err) {
+    console.error({ message: err})
+  }
+}) 
+
+
+
 
 module.exports = router;
