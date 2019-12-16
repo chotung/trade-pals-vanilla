@@ -28,11 +28,21 @@ router.post("/users", async (req, res) => {
 
 
 router.put("/users/:id", async (req, res) => {
- try {
-   const updateUser = await User.findOneAndUpdate
- } catch (error) {
-   
- } 
+  // console.log(req.params)
+  console.log(req.body)
+  try {
+    const updatedUser = await User.findOneAndUpdate({_id: req.params.id}, 
+      {
+        email: req.body.email,
+        username: req.body.username
+      }, (err, data) => {
+        updatedUser.setPassword(req.body.password)
+        console.log("Success")
+    })
+    res.json(updatedUser)
+  } catch (error) {
+    
+  } 
 })
 
 
