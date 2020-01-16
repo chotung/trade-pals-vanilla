@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Main from "./containers/Main";
 import ShoppingCart from "./containers/ShoppingCart";
@@ -7,27 +7,47 @@ import { Navbar, Nav, Button } from "react-bootstrap";
 import PetPage from "./containers/PetPage";
 import Home from "./containers/Home"
 import Footer from "./containers/Footer"
+import { connect } from "react-redux"
+import {
+  getYelpDataError,
+  getYelpData,
+  getYelpDataPending
+} from "./config/reducers/apiReducer/yelpReducer";
 
-// import { connect } from "react-redux"
+import { bindActionCreators } from 'redux'
+import fetchYelp from './config/apis/fetchYelp'
 
-// const mapStateToProps = state => {
-//   return {
-//     pets: state.pets,
-//     cart: state.shoppingCart
-//   }
-// }
 
-// const App = (props) => {
-const App = () => {
-  // console.log(props);
-  return (
-    <Router>
-      <Navbar className="trade-pals-header" bg="light" expand="lg">
-        <Link className="home" to="/">
-          Trade Pals
-        </Link>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.shouldComponentRender = this.shouldComponentRender.bind(this);
+  }
+
+  componentDidMount() {
+    const { fetchYelp } = this.props;
+    fetchYelp();
+  }
+
+  shouldComponentRender() {
+    const { pending } = this.props;
+    if (this.pending === false) return false;
+    // more tests
+    return true;
+  }
+
+  render() {
+    console.log(this.props)
+    return (
+      <Router>
+        <Navbar className="trade-pals-header" bg="light" expand="lg">
+          <Link className="home" to="/">
+            Trade Pals
+          </Link>
+
+          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Link className="index-pet" to="/index/pets">All Pets</Link>
           <Nav className="mr-auto"></Nav>
@@ -36,27 +56,70 @@ const App = () => {
               Cart
             </Button>
           </Link>
-        </Navbar.Collapse>
-      </Navbar>
+        </Navbar.Collapse> */}
+        </Navbar>
 
-      <Switch>
-        <Route path="/index/pets">
-          <Main />
-        </Route>
-        <Route path="/shoppingcart">
-          <ShoppingCart />
-        </Route>
-        <Route path="/petpage">
-          <PetPage />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-      <Footer/>
-    </Router>
-  );
+        <Switch>
+          <Route path="/index/pets">
+            <Main />
+          </Route>
+          <Route path="/shoppingcart">
+            <ShoppingCart />
+          </Route>
+          <Route path="/petpage">
+            <PetPage />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
+    );
+  }
 };
 
-// export default connect(mapStateToProps)(App);
-export default App;
+const mapStateToProps = state => ({
+  error: getYelpDataError(state),
+  businesses: getYelpData(state),
+  pending: getYelpDataPending(state)
+});
+
+const mapDispatchToProps = dispatch =>
+bindActionCreators(
+    {
+      fetchYelp: fetchYelp
+    },
+    dispatch
+  );
+
+
+
+// const geoLocate = function(){
+//   const options = {
+//     enableHighAccuracy: true,
+//     timeout: 5000,
+//     maximumAge: 0
+//   };
+
+//   const success = function(pos) {
+//     const crd = pos.coords;
+//     console.log(crd)
+//     console.log("Your current position is:");
+//     console.log(`Latitude : ${crd.latitude}`);
+//     console.log(`Longitude: ${crd.longitude}`);
+//     console.log(`More or less ${crd.accuracy} meters.`);
+//     // pass crd to the yelp api query
+//   }
+
+//   const error = function(err) {
+//     console.warn(`ERROR(${err.code}): ${err.message}`);
+//   };
+
+//   navigator.geolocation.getCurrentPosition(success, error, options)
+// }
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -17,7 +17,7 @@ const initialState = [
     sex: "Female",
     age: 1,
     location: "MD",
-    price: "priceless",
+    price: 19.95,
     breed: "Maltese",
     isAvailable: true
   },

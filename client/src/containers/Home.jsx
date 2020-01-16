@@ -1,9 +1,10 @@
 import React from "react";
-import PetSlideShow from "../components/PetSlideShow";
-import { Container, Row, Col, Image, Card } from "react-bootstrap";
+// import PetSlideShow from "../components/PetSlideShow";
+// import { Container, Row, Col, Image, Card } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { addToPetCard } from "../config/actions";
-import PetCard from "../components/PetCard"
+// import PetCard from "../components/PetCard"
 
 const mapStateToProps = state => {
   return {
@@ -25,6 +26,7 @@ class Home extends React.Component {
       truncated: true
     };
   }
+ 
   // I use these blocks twice refactor this later Here and PETCARD.jsx
   goToCardDetails = cardId => {
     addToPetCard(cardId);
