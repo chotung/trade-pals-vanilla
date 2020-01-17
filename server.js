@@ -75,13 +75,15 @@ app.get("/", (req, res) => {
   res.send("Welcome to your home page")
 })
 
-app.get("/yelp", async (req, res) => {
+app.post("/yelp", async (req, res) => {
+  console.log(req.body)
+  const {lat, lng} = req.body
   // get values from user input
   // get location from browser geolocation || input/req
   // radius default || user/req
   let searchTerm = "food"
-  let lat = "40.742953799999995";
-  let lng = "-73.9900555";
+  // let lat = "40.742953799999995";
+  // let lng = "-73.9900555";
   let radius = "1609";
   const response = await axios({
     method: 'get',

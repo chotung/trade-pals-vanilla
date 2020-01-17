@@ -28,7 +28,10 @@ class App extends Component {
 
   componentDidMount() {
     const { fetchYelp } = this.props;
-    fetchYelp();
+    // this.geoLocate()
+
+    // fetchYelp();
+    // When do I fire off this function???
   }
 
   shouldComponentRender() {
@@ -38,8 +41,28 @@ class App extends Component {
     return true;
   }
 
+  geoLocate = () => {
+    const { fetchYelp } = this.props;
+
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    const success = function(pos) {
+      const crd = pos.coords;
+      fetchYelp(crd)
+    }
+
+    const error = function(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options)
+  }
+
   render() {
-    console.log(this.props)
     return (
       <Router>
         <Navbar className="trade-pals-header" bg="light" expand="lg">
@@ -92,34 +115,5 @@ bindActionCreators(
     },
     dispatch
   );
-
-
-
-// const geoLocate = function(){
-//   const options = {
-//     enableHighAccuracy: true,
-//     timeout: 5000,
-//     maximumAge: 0
-//   };
-
-//   const success = function(pos) {
-//     const crd = pos.coords;
-//     console.log(crd)
-//     console.log("Your current position is:");
-//     console.log(`Latitude : ${crd.latitude}`);
-//     console.log(`Longitude: ${crd.longitude}`);
-//     console.log(`More or less ${crd.accuracy} meters.`);
-//     // pass crd to the yelp api query
-//   }
-
-//   const error = function(err) {
-//     console.warn(`ERROR(${err.code}): ${err.message}`);
-//   };
-
-//   navigator.geolocation.getCurrentPosition(success, error, options)
-// }
-
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

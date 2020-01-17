@@ -24,14 +24,20 @@ import {
 //   }
  
 // }
-const fetchYelp = () => {
+const fetchYelp = (location) => {
   return async dispatch => {
     try {
+      console.log(location);
+
       dispatch(fetchYelpPending());
-      const res = await axios(`/yelp`);
+      const res = await axios.post(`/yelp`,{
+        lat: location.latitude,
+        lng: location.longitude
+      });
       if (res.error) {
         throw res.error;
       }
+
       console.log(res.data);
 
       dispatch(fetchYelpSuccess(res.data));

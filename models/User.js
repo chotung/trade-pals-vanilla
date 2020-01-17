@@ -87,7 +87,10 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  location: [{
+    type: Number
+  }]
 });
 
 const User = mongoose.model("User", UserSchema);
