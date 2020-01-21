@@ -1,17 +1,18 @@
-const todos = (state = [{name:"Charlie"}], action) => {
+const initialState = {
+  name:"Charlie",
+  location: [{lat: 40, lng: 40}]
+}
+
+
+const user = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_USER':
-      return [
-        ...state,
-        {
-          id: action.id,
-          text: action.text,
-          completed: false
-        }
-      ]
+    case "LOG_USER":
+      return {
+        state
+      }
     default:
       return state
   }
 }
 
-export default todos
+export default user

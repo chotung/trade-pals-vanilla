@@ -28,9 +28,8 @@ class App extends Component {
 
   componentDidMount() {
     const { fetchYelp } = this.props;
-    // this.geoLocate()
+    this.geoLocate()
 
-    // fetchYelp();
     // When do I fire off this function???
   }
 
@@ -61,8 +60,10 @@ class App extends Component {
 
     navigator.geolocation.getCurrentPosition(success, error, options)
   }
-
+  // should show if im logg
   render() {
+    const { user } = this.props
+    console.log(this.props)
     return (
       <Router>
         <Navbar className="trade-pals-header" bg="light" expand="lg">
@@ -70,7 +71,7 @@ class App extends Component {
             Trade Pals
           </Link>
 
-          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Link className="index-pet" to="/index/pets">All Pets</Link>
           <Nav className="mr-auto"></Nav>
@@ -79,12 +80,12 @@ class App extends Component {
               Cart
             </Button>
           </Link>
-        </Navbar.Collapse> */}
+        </Navbar.Collapse>
         </Navbar>
 
         <Switch>
           <Route path="/index/pets">
-            <Main />
+            {this.props.user.location ? <Main /> : <div>false</div>}
           </Route>
           <Route path="/shoppingcart">
             <ShoppingCart />
@@ -105,7 +106,8 @@ class App extends Component {
 const mapStateToProps = state => ({
   error: getYelpDataError(state),
   businesses: getYelpData(state),
-  pending: getYelpDataPending(state)
+  pending: getYelpDataPending(state),
+  user: state.user
 });
 
 const mapDispatchToProps = dispatch =>

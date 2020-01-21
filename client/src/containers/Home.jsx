@@ -5,6 +5,7 @@ import { Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { addToPetCard } from "../config/actions";
 // import PetCard from "../components/PetCard"
+import MapContainer from "../components/MapContainer";
 
 const mapStateToProps = state => {
   return {
@@ -53,51 +54,10 @@ class Home extends React.Component {
       <Container fluid className="homepage p-0">
         {/* Opening Image */}
         <h1>Featured Pet</h1>
-
-        {/* <Row className="home-row">
-          <Col>
-            <PetSlideShow />
-          </Col>
-        </Row> */}
-
-        {/* Featured Pet */}
-        {/* <Row style={{ width: "100%" }}>
-          
-          <Col className="featured-card-col" lg={12}> */}
-        {/* <Card bg="light" className="">
-              <div className="border-bottom-0 border-right card-header">
-                <Card.Img
-                  className="featured-card"
-                  variant="top"
-                  src="https://images.unsplash.com/photo-1517638083100-3f5eb3055a8d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                  alt={"some-dog"}
-                />
-              </div>
-              <div className="info-block" style={infoStyles}>
-                <div className="description" onClick={this.flip}>
-                  {truncated ? this.truncate(desc) : desc}
-                </div>
-              </div>
-            </Card>
-          </Col>
-          <Col className="featured-card-col" lg={12}>
-            <Card bg="light" className="">
-              <div className="border-bottom-0 border-right card-header">
-                <Card.Img
-                  className="featured-card"
-                  variant="top"
-                  src="https://images.unsplash.com/photo-1545529787-5ba04530c1fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                  alt={"some-cat"}
-                />
-              </div>
-              <div className="info-block" style={infoStyles}>
-                <div className="description" onClick={this.flip}>
-                  {truncated ? this.truncate(desc) : desc}
-                </div>
-              </div>
-            </Card> */}
-        {/* </Col>
-        </Row> */}
+        <MapContainer/>
+        <form>
+          <input type="text" name="location" id="location" placeholder="City or Province"/>
+        </form>
       </Container>
     );
   }
