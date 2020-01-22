@@ -16,6 +16,9 @@ import {
 
 import { bindActionCreators } from 'redux'
 import fetchYelp from './config/apis/fetchYelp'
+import GoogleMap from "./components/GoogleMap";
+import UserLocationForm from "./components/UserLocationForm";
+
 
 
 
@@ -65,38 +68,45 @@ class App extends Component {
     const { user } = this.props
     console.log(this.props)
     return (
+      // <GoogleMap/>
       <Router>
-        <Navbar className="trade-pals-header" bg="light" expand="lg">
-          <Link className="home" to="/">
-            Trade Pals
-          </Link>
+        <div id="wrapper">
+          <Navbar className="trade-pals-header" bg="light" expand="lg">
+            <Link className="home" to="/">
+              Trade Pals
+            </Link>
 
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Link className="index-pet" to="/index/pets">All Pets</Link>
-          <Nav className="mr-auto"></Nav>
-          <Link className="cart" to="/shoppingcart">
-            <Button className="mr-sm-2" variant="outline-success">
-              Cart
-            </Button>
-          </Link>
-        </Navbar.Collapse>
-        </Navbar>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Link className="index-pet" to="/index/pets">
+                All Pets
+              </Link>
+              <Nav className="mr-auto"></Nav>
+              <Link className="cart" to="/shoppingcart">
+                <Button className="mr-sm-2" variant="outline-success">
+                  Cart
+                </Button>
+              </Link>
+            </Navbar.Collapse>
+          </Navbar>
 
-        <Switch>
-          <Route path="/index/pets">
-            {this.props.user.location ? <Main /> : <div>false</div>}
-          </Route>
-          <Route path="/shoppingcart">
-            <ShoppingCart />
-          </Route>
-          <Route path="/petpage">
-            <PetPage />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+          <Switch>
+            <Route path="/index/pets">
+              {this.props.user.location ? <Main /> : <div>false</div>}
+            </Route>
+            <Route path="/shoppingcart">
+              <ShoppingCart />
+            </Route>
+            <Route path="/petpage">
+              <PetPage />
+            </Route>
+            <Route path="/">
+              <UserLocationForm />
+              <Home />
+            </Route>
+          </Switch>
+          <div className="push"></div>
+        </div>
         <Footer />
       </Router>
     );

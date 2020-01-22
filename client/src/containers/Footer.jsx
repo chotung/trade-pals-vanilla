@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Navbar } from 'react-bootstrap'
+
+const footerStyle = {
+  
+}
+
 export default class Footer extends Component {
   render() {
     return (
-      <Container fluid className="footer">
-        Footer
-      </Container>
-    )
+      // <nav className="navbar-default navbar-fixed-bottom footer">
+      // </div>
+      <Navbar  className="footer">
+
+        <div className="row" style={{footerStyle}}>Footer</div>
+      </Navbar>
+    );
   }
 }
