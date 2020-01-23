@@ -20,17 +20,12 @@ class GoogleMap extends Component {
 
   render() {
     return (
-      // <Container fluid id="map-container">
-
-
         <Map
           google={this.props.google}
           zoom={8}
           style={mapStyles}
           initialCenter={{ lat: 40, lng: -70 }}
         ></Map>
-
-      // </Container>
     );
   }
 }

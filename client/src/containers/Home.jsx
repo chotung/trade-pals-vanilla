@@ -52,9 +52,12 @@ class Home extends React.Component {
     // All descriptions will be attached to the pet model and be pulled from the store
 
     return (
-      <Container fluid className="homepage p-0">
+      // <Container fluid className="homepage p-0">
+      <div id="map-canvas">
         <GoogleMap />
-      </Container>
+
+      </div>
+      // </Container>
       // <GoogleMap />
 
     );

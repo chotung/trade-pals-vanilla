@@ -66,30 +66,34 @@ class App extends Component {
   // should show if im logg
   render() {
     const { user } = this.props
-    console.log(this.props)
+    // console.log(this.props)
     return (
-      // <GoogleMap/>
       <Router>
-        <div id="wrapper">
-          <Navbar className="trade-pals-header" bg="light" expand="lg">
-            <Link className="home" to="/">
-              Trade Pals
-            </Link>
-
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Link className="index-pet" to="/index/pets">
-                All Pets
+        <div
+          id="wrapper"
+          className="d-flex flex-column justify-content-between fullHeight"
+        >
+          <header>
+            <Navbar className="trade-pals-header" bg="light" expand="lg">
+              <Link className="home" to="/">
+                Trade Pals
               </Link>
-              <Nav className="mr-auto"></Nav>
-              <Link className="cart" to="/shoppingcart">
-                <Button className="mr-sm-2" variant="outline-success">
-                  Cart
-                </Button>
-              </Link>
-            </Navbar.Collapse>
-          </Navbar>
 
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Link className="index-pet" to="/index/pets">
+                  All Pets
+                </Link>
+                <Nav className="mr-auto"></Nav>
+                <Link className="cart" to="/shoppingcart">
+                  <Button className="mr-sm-2" variant="outline-success">
+                    Cart
+                  </Button>
+                </Link>
+              </Navbar.Collapse>
+              </Navbar>
+          </header>
+          
           <Switch>
             <Route path="/index/pets">
               {this.props.user.location ? <Main /> : <div>false</div>}
@@ -101,14 +105,18 @@ class App extends Component {
               <PetPage />
             </Route>
             <Route path="/">
-              <UserLocationForm />
-              <Home />
+              <div className="contento">
+                <UserLocationForm />
+                <Home />
+              </div>
             </Route>
           </Switch>
-          <div className="push"></div>
+          <Footer />
         </div>
-        <Footer />
+
       </Router>
+      // ===================================================================
+      
     );
   }
 };
