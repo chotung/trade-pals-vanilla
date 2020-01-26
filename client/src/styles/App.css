@@ -1,5 +1,9 @@
-html {
-  height: 100%;
+html,
+body {
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -16,11 +20,6 @@ body {
   margin: 0;
   min-height: 100%;
   font-family: "Helvetica Neue", Arial, sans-serif;
-}
-
-body,
-html {
-  margin: 0;
 }
 
 #root {
@@ -169,39 +168,58 @@ html {
           flex: 1 1 auto;
 }
 
-.footer {
-  padding: 1rem;
+.contento {
+  height: 100vh;
+}
+
+.user-location-form .title-colm, .user-location-form .form-colm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.location-input {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.location-input #location {
+  background: #fefefe;
+  border-radius: .3rem;
+  width: 100%;
   text-align: center;
-  background-color: #1D3159;
-  width: 100%;
-  color: white;
-}
-
-.user-location-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.user-location-form form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-html,
-body {
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
 }
 
 header, footer, #map-canvas {
   width: 100%;
 }
 
+#wrapper {
+  position: relative;
+  height: 100vh;
+}
+
 #map-canvas {
   height: 100%;
+}
+
+.footer {
+  padding: 1rem;
+  text-align: center;
+  background-color: #1D3159;
+  width: 100%;
+  color: white;
+  bottom: 0;
 }
 /*# sourceMappingURL=App.css.map */

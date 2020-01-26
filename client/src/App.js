@@ -18,7 +18,7 @@ import { bindActionCreators } from 'redux'
 import fetchYelp from './config/apis/fetchYelp'
 import GoogleMap from "./components/GoogleMap";
 import UserLocationForm from "./components/UserLocationForm";
-
+import { Row } from "react-bootstrap"
 
 
 
@@ -66,57 +66,62 @@ class App extends Component {
   // should show if im logg
   render() {
     const { user } = this.props
+    // const footerStyle = {
+    //   padding: "1rem",
+    //   textAlign: "center",
+    //   backgroundColor: "#1D3159",
+    //   width: "100%",
+    //   color: "white",
+    //   position: "absolute !important",
+    // }
     // console.log(this.props)
     return (
       <Router>
-        <div
+        {/* <div
           id="wrapper"
-          className="d-flex flex-column justify-content-between fullHeight"
-        >
-          <header>
-            <Navbar className="trade-pals-header" bg="light" expand="lg">
-              <Link className="home" to="/">
-                Trade Pals
+          className="fullHeight"
+        > */}
+        <header>
+          <Navbar className="trade-pals-header" bg="light" expand="lg">
+            <Link className="home" to="/">
+              Trade Pals
+            </Link>
+
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Link className="index-pet" to="/index/pets">
+                All Pets
               </Link>
+              <Nav className="mr-auto"></Nav>
+              <Link className="cart" to="/shoppingcart">
+                <Button className="mr-sm-2" variant="outline-success">
+                  Cart
+                </Button>
+              </Link>
+            </Navbar.Collapse>
+          </Navbar>
+        </header>
 
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Link className="index-pet" to="/index/pets">
-                  All Pets
-                </Link>
-                <Nav className="mr-auto"></Nav>
-                <Link className="cart" to="/shoppingcart">
-                  <Button className="mr-sm-2" variant="outline-success">
-                    Cart
-                  </Button>
-                </Link>
-              </Navbar.Collapse>
-              </Navbar>
-          </header>
-          
-          <Switch>
-            <Route path="/index/pets">
-              {this.props.user.location ? <Main /> : <div>false</div>}
-            </Route>
-            <Route path="/shoppingcart">
-              <ShoppingCart />
-            </Route>
-            <Route path="/petpage">
-              <PetPage />
-            </Route>
-            <Route path="/">
-              <div className="contento">
-                <UserLocationForm />
-                <Home />
-              </div>
-            </Route>
-          </Switch>
-          <Footer />
-        </div>
-
+        <Switch>
+          <Route path="/index/pets">
+            {this.props.user.location ? <Main /> : <div>false</div>}
+          </Route>
+          <Route path="/shoppingcart">
+            <ShoppingCart />
+          </Route>
+          <Route path="/petpage">
+            <PetPage />
+          </Route>
+          <Route path="/">
+            <div className="m-0 contento">
+              <UserLocationForm />
+              <Home />
+              <Footer />
+            </div>
+          </Route>
+        </Switch>
+        {<Footer />}
       </Router>
-      // ===================================================================
-      
     );
   }
 };

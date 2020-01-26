@@ -7,7 +7,7 @@ import { addToPetCard } from "../config/actions";
 // import PetCard from "../components/PetCard"
 import GoogleMap from "../components/GoogleMap";
 import UserLocationForm from "../components/UserLocationForm";
-
+import Footer from "../containers/Footer"
 const mapStateToProps = state => {
   return {
     pets: state.pets
@@ -55,11 +55,8 @@ class Home extends React.Component {
       // <Container fluid className="homepage p-0">
       <div id="map-canvas">
         <GoogleMap />
-
       </div>
       // </Container>
-      // <GoogleMap />
-
     );
   }
 }

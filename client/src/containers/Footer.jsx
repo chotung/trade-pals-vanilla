@@ -8,9 +8,9 @@ const footerStyle = {
 export default class Footer extends Component {
   render() {
     return (
-      <Navbar fixed="bottom" className="justify-content-center footer">
+      <footer className="justify-content-center footer">
         Footer
-      </Navbar>
+      </footer>
     );
   }
 }
