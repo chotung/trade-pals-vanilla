@@ -201,6 +201,16 @@ body {
   text-align: center;
 }
 
+.authentication-link {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.authentication-link a {
+  margin-left: 1em;
+}
+
 header, footer, #map-canvas {
   width: 100%;
 }
