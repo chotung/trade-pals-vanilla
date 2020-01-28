@@ -232,4 +232,8 @@ header, footer, #map-canvas {
   color: white;
   bottom: 0;
 }
+
+.show {
+  position: absolute;
+}
 /*# sourceMappingURL=App.css.map */

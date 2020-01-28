@@ -27,10 +27,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: "",
+      home: true
     };
 
-    this.shouldComponentRender = this.shouldComponentRender.bind(this);
+    // this.shouldComponentRender = this.shouldComponentRender.bind(this);
   }
   // ====================================
   // Life Cycle methods
@@ -44,12 +45,28 @@ class App extends Component {
   // ====================================
   // Class methods
 
-  shouldComponentRender() {
-    // const { pending } = this.props;
-    if (this.pending === false) return false;
-    // more tests
-    return true;
+  // shouldComponentRender() {
+  //   // const { pending } = this.props;
+  //   if (this.pending === false) return false;
+  //   // more tests
+  //   return true;
+  // }
+  footerRender = (e) => {
+    // console.log(e.target)
+    // if(e.target)
+    this.setState(prevState => ({
+      home: false
+    }))
+    // console.log(this.state)
+
   }
+  renderHomeFooter = () => {
+    this.setState(prevState => ({
+      home: true
+    }))
+  }
+  
+
 
   geoLocate = () => {
     const { fetchYelp } = this.props;
@@ -95,7 +112,7 @@ class App extends Component {
       <Router>
         <header>
           <Navbar className="trade-pals-header" bg="light" expand="lg">
-            <Link className="home" to="/">
+            <Link onClick={this.renderHomeFooter} className="home" to="/">
               Trade Pals
             </Link>
 
@@ -105,7 +122,7 @@ class App extends Component {
                 All Pets
               </Link> */}
               <Nav className="mr-auto"></Nav>
-              <Row className="authentication-link">
+              <Row onClick={this.footerRender} className="authentication-link">
                 <Link to="/login">
                   <Login />
                 </Link>
@@ -147,7 +164,7 @@ class App extends Component {
             </div>
           </Route>
         </Switch>
-        {<Footer />}
+        {this.state.home === false ? <Footer absFoot={"show"} /> : null}
       </Router>
     );
   }

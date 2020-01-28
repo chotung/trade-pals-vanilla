@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Footer extends Component {
-  render() {
-    return (
-      <footer className="justify-content-center footer">
-        Footer
-      </footer>
-    );
-  }
+const Footer = (props) => {
+  const { absFoot } = props
+  return (
+    <footer className={`justify-content-center ${absFoot} footer`} >
+      Footer
+    </footer>
+  )
 }
+
+
+export default Footer
