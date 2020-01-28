@@ -16,28 +16,30 @@ import {
 
 import { bindActionCreators } from 'redux'
 import fetchYelp from './config/apis/fetchYelp'
-import GoogleMap from "./components/GoogleMap";
 import UserLocationForm from "./components/UserLocationForm";
-import { Row } from "react-bootstrap"
+
 
 
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      value: ""
+    };
 
     this.shouldComponentRender = this.shouldComponentRender.bind(this);
   }
 
   componentDidMount() {
-    const { fetchYelp } = this.props;
-    this.geoLocate()
+    // const { fetchYelp } = this.props;
+    this.geoLocate();
 
     // When do I fire off this function???
   }
 
   shouldComponentRender() {
-    const { pending } = this.props;
+    // const { pending } = this.props;
     if (this.pending === false) return false;
     // more tests
     return true;
@@ -54,40 +56,41 @@ class App extends Component {
 
     const success = function(pos) {
       const crd = pos.coords;
-      fetchYelp(crd)
-    }
+      fetchYelp(crd);
+    };
 
     const error = function(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     };
 
-    navigator.geolocation.getCurrentPosition(success, error, options)
-  }
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  };
   // should show if im logg
+  updateLocation = e => {
+    let input = e.target.value;
+    this.setState({
+      value: input
+    })
+
+    // console.log("updating location")
+  };
+  submit = e => {
+    e.preventDefault();
+    // Updates the location with new location
+    console.log("submits");
+  };
+
   render() {
-    const { user } = this.props
-    // const footerStyle = {
-    //   padding: "1rem",
-    //   textAlign: "center",
-    //   backgroundColor: "#1D3159",
-    //   width: "100%",
-    //   color: "white",
-    //   position: "absolute !important",
-    // }
-    // console.log(this.props)
+    // const { user } = this.props
     return (
       <Router>
-        {/* <div
-          id="wrapper"
-          className="fullHeight"
-        > */}
         <header>
           <Navbar className="trade-pals-header" bg="light" expand="lg">
             <Link className="home" to="/">
               Trade Pals
             </Link>
 
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Link className="index-pet" to="/index/pets">
                 All Pets
@@ -98,12 +101,12 @@ class App extends Component {
                   Cart
                 </Button>
               </Link>
-            </Navbar.Collapse>
+            </Navbar.Collapse> */}
           </Navbar>
         </header>
 
         <Switch>
-          <Route path="/index/pets">
+          {/* <Route path="/index/pets">
             {this.props.user.location ? <Main /> : <div>false</div>}
           </Route>
           <Route path="/shoppingcart">
@@ -111,10 +114,10 @@ class App extends Component {
           </Route>
           <Route path="/petpage">
             <PetPage />
-          </Route>
+          </Route> */}
           <Route path="/">
             <div className="m-0 contento">
-              <UserLocationForm />
+              <UserLocationForm value={this.state.value} updateLocation={this.updateLocation} submit={this.submit} />
               <Home />
               <Footer />
             </div>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper }  from "google-maps-react"
 import { googleKey } from "../secret"
-import { Container } from "react-bootstrap"
+
 const mapStyles = {
   width: "100%",
   height: "100%",

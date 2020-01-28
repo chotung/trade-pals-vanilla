@@ -1,25 +1,22 @@
 import React from "react";
-// import PetSlideShow from "../components/PetSlideShow";
-// import { Container, Row, Col, Image, Card } from "react-bootstrap";
-import { Container, Row, Col } from "react-bootstrap";
+// import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { addToPetCard } from "../config/actions";
-// import PetCard from "../components/PetCard"
+
 import GoogleMap from "../components/GoogleMap";
-import UserLocationForm from "../components/UserLocationForm";
-import Footer from "../containers/Footer"
+
 const mapStateToProps = state => {
   return {
     pets: state.pets
   };
 };
 
-const infoStyles = {
-  display: "flex",
-  justifyContent: "center",
-  alignSelf: "center",
-  margin: "2rem"
-};
+// const infoStyles = {
+//   display: "flex",
+//   justifyContent: "center",
+//   alignSelf: "center",
+//   margin: "2rem"
+// };
 
 class Home extends React.Component {
   constructor(props) {
@@ -48,7 +45,7 @@ class Home extends React.Component {
   };
 
   render() {
-    const { truncated } = this.state;
+    // const { truncated } = this.state;
     // All descriptions will be attached to the pet model and be pulled from the store
 
     return (
@@ -63,18 +60,3 @@ class Home extends React.Component {
 export default connect(mapStateToProps)(Home);
 
 // Featured Pet should always be updated if adopted
-
-
-/**
- *  <div className="row" style={{ zIndex: 11, justifyContent: "start"}}>
-          <h1>Featured Pet</h1>
-          <form>
-            <input
-              type="text"
-              name="location"
-              id="location"
-              placeholder="City or Province"
-            />
-          </form>
-        </div>
- */
