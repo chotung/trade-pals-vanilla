@@ -5,6 +5,8 @@ const registerForm = {
   border: "solid 1px black",
   maxWidth: "500px",
   minWidth: "50vw",
+  padding: "2rem",
+
   // width: "",
   height: "auto"
 };
@@ -12,18 +14,23 @@ const registerForm = {
 const registerCon = {
   border: "solid 1px black",
   // color: "white",
-  justifyContent: "flex-end",
-  display: "flex",
-  alignItems: "center",
-}
+  justifyContent: "center",
+  // justifyContent: "center",
 
+  display: "flex",
+  alignItems: "center"
+};
+
+const registerCol = {
+  marginBottom: "3.5rem",
+}
 
 // on small screens center not flex-end
 const Register = () => {
   return (
-    <Container fluid style={registerCon}>
+    <Container className="justify-content-md-end" fluid style={registerCon}>
       <Row>
-        <Col sm={12}>
+        <Col style={registerCol}sm={12}>
           <form style={registerForm} >
             <div className="form-group">
               <label htmlFor="name">name</label>
