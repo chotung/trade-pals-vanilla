@@ -28,7 +28,6 @@ class App extends Component {
     super(props);
     this.state = {
       value: "",
-      home: true
     };
 
     // this.shouldComponentRender = this.shouldComponentRender.bind(this);
@@ -51,20 +50,6 @@ class App extends Component {
   //   // more tests
   //   return true;
   // }
-  footerRender = (e) => {
-    // console.log(e.target)
-    // if(e.target)
-    this.setState(prevState => ({
-      home: false
-    }))
-    // console.log(this.state)
-
-  }
-  renderHomeFooter = () => {
-    this.setState(prevState => ({
-      home: true
-    }))
-  }
   
 
 
@@ -106,7 +91,8 @@ class App extends Component {
   };
 
   render() {
-
+    const relPath = window.location.pathname
+    console.log(relPath)
     // const { user } = this.props
     return (
       <Router>
@@ -124,10 +110,10 @@ class App extends Component {
               <Nav className="mr-auto"></Nav>
               <Row onClick={this.footerRender} className="authentication-link">
                 <Link to="/login">
-                  <Login />
+                  Login
                 </Link>
                 <Link to="/register">
-                  <Register />
+                  Register
                 </Link>
                 <Link className="cart" to="/shoppingcart">
                   <Button className="mr-sm-2" variant="outline-success">
@@ -150,8 +136,13 @@ class App extends Component {
             <PetPage />
           </Route> */}
 
-          <Route path="/login">Login Form</Route>
-          <Route path="/register">sign up form</Route>
+          <Route path="/login">
+            
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
           <Route path="/">
             <div className="m-0 contento">
               <UserLocationForm
@@ -164,7 +155,7 @@ class App extends Component {
             </div>
           </Route>
         </Switch>
-        {this.state.home === false ? <Footer absFoot={"show"} /> : null}
+        {relPath !== "/" ? <Footer absFoot={"show"} /> : null}
       </Router>
     );
   }

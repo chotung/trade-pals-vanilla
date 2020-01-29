@@ -1,10 +1,14 @@
-import React from 'react';
+import React from "react";
+import { Container, Row } from "react-bootstrap";
+
 
 const Login = () => {
   return (
-    <div>
-      Login
-    </div>
+    <Container>
+      <Row>
+        Login
+      </Row>
+    </Container>
   );
 }
 

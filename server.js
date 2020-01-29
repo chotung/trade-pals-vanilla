@@ -71,6 +71,7 @@ app.use(
 
 app.use("/api", require("./routes/api/users.js"));
 
+
 app.get("/", (req, res) => {
   res.send("Welcome to your home page")
 })
@@ -81,7 +82,7 @@ app.post("/yelp", async (req, res) => {
   // get values from user input
   // get location from browser geolocation || input/req
   // radius default || user/req
-  let searchTerm = "food"
+  let searchTerm = "animal shelter"
   // let lat = "40.742953799999995";
   // let lng = "-73.9900555";
   let radius = "1609";
@@ -102,3 +103,11 @@ app.post("/yelp", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server started on http://${HOST}:${PORT}`);
 });
+
+
+
+/**
+ * THE BUSINESS WEBSITE FROM YELP
+ * 
+ * document.querySelector(".main-content-wrap").children[0].children[0].children[2].firstChild.firstChild.children[1].children[1].firstChild.firstChild.firstChild.firstChild.children[0].firstChild.children[1].children[1]
+ */

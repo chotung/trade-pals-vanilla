@@ -88,9 +88,9 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  location: [{
-    type: Number
-  }]
+  location: {
+    type: String
+  }
 });
 
 const User = mongoose.model("User", UserSchema);

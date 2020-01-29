@@ -3,8 +3,10 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../../models/User"); // User model
 
+
+// REGISTER
 router.post("/register", (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, location } = req.body;
 
   // Check required fields
   if (!name || !email || !password) {
@@ -22,7 +24,8 @@ router.post("/register", (req, res) => {
     const newUser = new User({
       name,
       email,
-      password
+      password,
+      location
     });
 
     //Password hashing
@@ -46,6 +49,7 @@ router.post("/register", (req, res) => {
 
 })
 
+// LOGIN
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
@@ -71,7 +75,7 @@ router.post("/login", (req, res) => {
 });
 
 
-
+// DELETE SESSIONS
 router.delete("/logout", (req, res) => {
   req.session.destroy((err) => {
     //delete session data from store, using sessionID in cookie
@@ -81,6 +85,7 @@ router.delete("/logout", (req, res) => {
   });
 });
 
+// AUTH
 router.get("/authchecker", (req, res) => {
   const sessUser = req.session.user;
   if (sessUser) {
@@ -90,5 +95,32 @@ router.get("/authchecker", (req, res) => {
   }
 });
 
+// DELETE YOUR ACCOUNT
+
+router.delete("/users/:id", async (req, res) => {
+  // WIP (WORK IN PROGRESS)
+  try {
+    User.findOneAndDelete({ _id: req.params.id }, (err, data) => {
+      if (data) {
+        res.json({ message: "Your Account Has Been Deleted" });
+      } else {
+        res.json({ message: "Account does not exist" });
+      }
+    });
+  } catch (err) {
+    console.error({ message: err });
+  }
+}); 
+
+// ADMIN ROUTES
+router.get("/users", async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.json(users);
+  } catch (err) {
+    console.error({ message: err });
+    res.status(404);
+  }
+});
 
 module.exports = router
