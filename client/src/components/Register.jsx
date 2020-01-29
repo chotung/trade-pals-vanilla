@@ -3,20 +3,23 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap"
 
 const registerForm = {
   border: "solid 1px black",
-  maxWidth: "500px",
+  backgroundColor: "rgb( 250, 251, 252, 0.9)",
   minWidth: "50vw",
   padding: "2rem",
-
-  // width: "",
-  height: "auto"
+  borderRadius: "24px",
+  height: "auto",
+  boxShadow: "0px 2px 36px 6px rgba(0,0,0,0.3)"
 };
 
 const registerCon = {
-  border: "solid 1px black",
-  // color: "white",
+  backgroundImage:
+    "url(https://petcentral.chewy.com/wp-content/uploads/Dog_Normal_Sleep_Puppy_Dec_LS_MZ-1.jpg)",
+  backgroundSize: "cover",
+    border: "solid 1px black",
   justifyContent: "center",
-  // justifyContent: "center",
 
+// add background image that transitions
+// white film over
   display: "flex",
   alignItems: "center"
 };
@@ -28,7 +31,7 @@ const registerCol = {
 // on small screens center not flex-end
 const Register = () => {
   return (
-    <Container className="justify-content-md-end" fluid style={registerCon}>
+    <Container fluid style={registerCon}>
       <Row>
         <Col style={registerCol}sm={12}>
           <form style={registerForm} >

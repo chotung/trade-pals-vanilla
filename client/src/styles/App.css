@@ -40,7 +40,6 @@ body {
 .trade-pals-header {
   -webkit-box-shadow: 0.05px 1px 18px rgba(12, 2, 97, 0.363);
           box-shadow: 0.05px 1px 18px rgba(12, 2, 97, 0.363);
-  margin-bottom: .75rem;
 }
 
 .trade-pals-header .home {
