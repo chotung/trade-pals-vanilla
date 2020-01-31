@@ -51,7 +51,7 @@ class Home extends React.Component {
     return (
       // <Container fluid className="homepage p-0">
       <div id="map-canvas">
-        <GoogleMap />
+        {/* <GoogleMap /> */}
       </div>
       // </Container>
     );

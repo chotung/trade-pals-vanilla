@@ -135,7 +135,6 @@ body {
       transform: translate(-50%, -50%)
     }
   }
-  
 }
 
 .container-fluid:not(.footer){
@@ -155,7 +154,6 @@ body {
 }
 
 .location-input{
-
   width: 100%;
   display: flex;
   justify-content: center;
@@ -166,16 +164,6 @@ body {
     text-align: center;
   }
 }
-
-
-.authentication-link {
-  align-items: center;
-  a {
-    margin-left: 1em;
-  }
-}
-
-
 
 header, footer, #map-canvas {
   width: 100%;
@@ -199,13 +187,79 @@ header, footer, #map-canvas {
   background-color: #1D3159;
   width: 100%;
   color: white;
+  z-index: 1;
   // position: absolute !important;
   bottom: 0;
 }
-
-.show {
-  position: absolute;
+// Footer to show or hide
+.footShow {
+  display: block;
 }
 
+.footHide {
+  display: none;
+}
 
-    
+//  Header links
+
+// Links need to fixed
+
+.authentication-link {
+  // flex-direction: column;
+  align-items: center;
+  a {
+    margin-left: 1em;
+  }
+}
+
+// .mobile-nav {
+//   display: flex;
+// }
+
+// .show {
+//   // position: relative !important;
+//   flex-direction: column;
+
+// }
+
+
+// =================================
+ .registerForm {
+  background-color: rgba( 250, 251, 252, 0.9);
+  min-width: 50vw;
+  padding: 2rem;
+  border-radius: 24px;
+  height: auto;
+  box-shadow: 0px 2px 36px 6px rgba(0,0,0,0.3);
+  align-self: center;
+  width: 100%;
+};
+
+ .registerCon{
+  justify-content: center;
+// add background image that transitions
+// white film over
+  display: flex;
+  align-items: center;
+  padding: 0 !important;
+  position: relative
+};
+
+ .customRow{
+  top: 0;
+  margin: 0 !important;
+  height: 100vh;
+  width: 100%;
+  position: relative
+};
+
+.registerCol{
+  margin: 1em 0;
+  display: flex
+}
+ .imageStyle{
+  position: absolute ;
+  width: 100%;
+  height: 100% !important;
+  opacity: 0.5;
+}
