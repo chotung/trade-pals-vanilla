@@ -27,26 +27,18 @@ class App extends Component {
       value: "",
     };
 
-    // this.shouldComponentRender = this.shouldComponentRender.bind(this);
   }
   // ====================================
   // Life Cycle methods
   componentDidMount() {
     // const { fetchYelp } = this.props;
     this.geoLocate();
-
+    // console.log(sessionStorage.getItem)
     // When do I fire off this function???
   }
 
   // ====================================
   // Class methods
-
-  // shouldComponentRender() {
-  //   // const { pending } = this.props;
-  //   if (this.pending === false) return false;
-  //   // more tests
-  //   return true;
-  // }
 
   geoLocate = () => {
     const { fetchYelp } = this.props;
@@ -138,6 +130,7 @@ class App extends Component {
           </Route> */}
           <Route path="/shoppingcart">
             <ShoppingCart />
+            <Footer/>
           </Route>
           {/* <Route path="/petpage">
             <PetPage />
