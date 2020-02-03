@@ -4,7 +4,7 @@ import pets from "./pets";
 import shoppingCart from "./shoppingCart";
 import petCard from "./petcard";
 import { yelpReducer } from "./apiReducer/yelpReducer";
-import user from "./users";
+import { user } from "./users";
 
 const rootReducer = combineReducers({
   pets,

@@ -1,17 +1,18 @@
 import React from "react";
 import { Container, Col, Button, Row, Form, Image } from "react-bootstrap";
 
-const registerForm = {
-  backgroundColor: "rgb( 250, 251, 252, 0.9)",
-  minWidth: "50vw",
-  padding: "2rem",
-  borderRadius: "24px",
-  height: "auto",
-  boxShadow: "0px 2px 36px 6px rgba(0,0,0,0.3)"
-};
+// const registerForm = {
+//   backgroundColor: "rgb( 250, 251, 252, 0.9)",
+//   minWidth: "50vw",
+//   padding: "2rem",
+//   borderRadius: "24px",
+//   height: "auto",
+//   boxShadow: "0px 2px 36px 6px rgba(0,0,0,0.3)"
+// };
 
 
-const Login = () => {
+const Login = (props) => {
+
   return (
     <Container fluid className="registerCon">
       <Row className="customRow">
@@ -21,7 +22,7 @@ const Login = () => {
           src="https://petcentral.chewy.com/wp-content/uploads/Dog_Normal_Sleep_Puppy_Dec_LS_MZ-1.jpg"
         />
         <Col className="registerCol" sm={12}>
-          <Form className="registerForm">
+          <Form className="registerForm" onSubmit={props.submit}>
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
@@ -33,7 +34,7 @@ const Login = () => {
               <label htmlFor="password">Password</label>
               <input type="password" className="form-control" />
             </div>
-            <Button>Submit</Button>
+            <Button type="submit" value="Submit" data-type="login">Submit</Button>
           </Form>
         </Col>
       </Row>

@@ -1,4 +1,50 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
+
+const UserSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  location: {
+    type: String
+  }
+});
+
+const User = mongoose.model("User", UserSchema);
+
+module.exports = User;
+
+// email
+// type: String,
+//       lowercase: true,
+//       required: [true, "can't be blank"],
+//       match: [/\S+@\S+\.\S+/, "is invalid"],
+//       index: true
+
+// username
+//  type: String,
+//       lowercase: true,
+//       required: [true, "can't be blank"],
+//       match: [/^[a-zA-Z0-9]+$/, "is invalid"],
+//       index: true
+
+//     bio: String,
+//     image: String,
+
+
+
 // const Schema = mongoose.Schema;
 // const uniqueValidator = require('mongoose-unique-validator');
 // const crypto = require("crypto")
@@ -67,49 +113,3 @@
 // const User = mongoose.model("User", UserSchema);
 
 // module.exports = User;
-
-
-const mongoose = require("mongoose");
-
-const UserSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  },
-  location: {
-    type: String
-  }
-});
-
-const User = mongoose.model("User", UserSchema);
-
-module.exports = User;
-
-// email
-// type: String,
-//       lowercase: true,
-//       required: [true, "can't be blank"],
-//       match: [/\S+@\S+\.\S+/, "is invalid"],
-//       index: true
-
-// username
-//  type: String,
-//       lowercase: true,
-//       required: [true, "can't be blank"],
-//       match: [/^[a-zA-Z0-9]+$/, "is invalid"],
-//       index: true
-
-//     bio: String,
-//     image: String,

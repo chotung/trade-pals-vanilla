@@ -1,5 +1,16 @@
+// DEPENDENCIES
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// REDUX
+import { bindActionCreators } from "redux";
+import fetchYelp from "./config/apis/fetchYelp";
+import { createUser, loginUser } from "./config/apis/fetchUser";
+import {
+  getYelpDataError,
+  getYelpData,
+  getYelpDataPending
+} from "./config/reducers/apiReducer/yelpReducer";
+// COMPONENTS
 // import Main from "./containers/Main";
 import ShoppingCart from "./containers/ShoppingCart";
 import "./styles/App.css";
@@ -8,14 +19,9 @@ import { Navbar, Nav, Button, Row } from "react-bootstrap";
 import Home from "./containers/Home";
 import Footer from "./containers/Footer";
 import { connect } from "react-redux";
-import {
-  getYelpDataError,
-  getYelpData,
-  getYelpDataPending
-} from "./config/reducers/apiReducer/yelpReducer";
 
-import { bindActionCreators } from "redux";
-import fetchYelp from "./config/apis/fetchYelp";
+
+
 import UserLocationForm from "./components/UserLocationForm";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -71,10 +77,18 @@ class App extends Component {
   };
   submit = e => {
     e.preventDefault();
+    const btnType = e.target.children[1].dataset.type;
+    // TAKES THE INFO AND SEND IT BACK POST REQUEST
+    if(btnType === "register") {
+      // DO API CALL FOR REGISTER ROUTE
+      console.log("REGISTER")
+    } else {
+      // DO API CALL FOR LOGIN ROUTE
+      console.log("LOGIN")
+    }
     // Updates the location with new location
     // Google needs to know about location for the MAP
     // Yelp needs to know the location for animal shelters
-    console.log("submits");
   };
 
   footerChange = () => {
@@ -93,10 +107,7 @@ class App extends Component {
   };
 
   render() {
-    const relPath = window.location.pathname;
-    // console.log("relative path" ,relPath)
-    // console.log(this.state.footShow);
-    // const { user } = this.props
+    console.log(this.props)
     return (
       <Router>
         <header>
@@ -137,11 +148,11 @@ class App extends Component {
           </Route> */}
 
           <Route path="/login">
-            <Login />
+            <Login submit={this.submit} />
             <Footer />
           </Route>
           <Route path="/register">
-            <Register />
+            <Register submit={this.submit} />
             <Footer />
           </Route>
           <Route path="/">
@@ -162,16 +173,18 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  error: getYelpDataError(state),
+  yelpError: getYelpDataError(state),
   businesses: getYelpData(state),
-  pending: getYelpDataPending(state),
+  yelpPending: getYelpDataPending(state),
   user: state.user
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      fetchYelp: fetchYelp
+      fetchYelp: fetchYelp,
+      createUser: createUser,
+      loginUser
     },
     dispatch
   );

@@ -37,6 +37,7 @@ router.post("/register", (req, res) => {
         // Save user
         newUser
           .save()
+          // redirect?
           .then(
             res.json({
               msg: "Successfully Registered"
@@ -52,8 +53,8 @@ router.post("/register", (req, res) => {
 // LOGIN
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
-
   // basic validation
+  console.log("Login route", email, " " ,password)
   if (!email || !password) {
     return res.status(400).json({ msg: "Please enter all fields" });
   }

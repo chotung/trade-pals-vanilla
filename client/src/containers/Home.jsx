@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { addToPetCard } from "../config/actions";
 
-import GoogleMap from "../components/GoogleMap";
+// import GoogleMap from "../components/GoogleMap";
 
 const mapStateToProps = state => {
   return {
