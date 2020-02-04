@@ -1,5 +1,9 @@
 import React from "react";
 import { Container, Col, Button, Row, Form, Image } from "react-bootstrap";
+import { bindActionCreators } from "redux"
+import { createUser, loginUser } from "../config/apis/fetchUser";
+import { connect } from "react-redux";
+
 
 // const registerForm = {
 //   backgroundColor: "rgb( 250, 251, 252, 0.9)",
@@ -11,8 +15,12 @@ import { Container, Col, Button, Row, Form, Image } from "react-bootstrap";
 // };
 
 
-const Login = (props) => {
 
+
+const Login = (props) => {
+//  console.log("LOGIN COMPONENT", props);
+ const { update } = props
+ const { email, password } = props.loginInfo
   return (
     <Container fluid className="registerCon">
       <Row className="customRow">
@@ -22,24 +30,47 @@ const Login = (props) => {
           src="https://petcentral.chewy.com/wp-content/uploads/Dog_Normal_Sleep_Puppy_Dec_LS_MZ-1.jpg"
         />
         <Col className="registerCol" sm={12}>
-          <Form className="registerForm" onSubmit={props.submit}>
+          <Form className="registerForm">
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
+                onChange={update}
+                value={email}
                 name="email"
                 type="email"
                 className="form-control"
                 placeholder="Enter Your Email"
               />
               <label htmlFor="password">Password</label>
-              <input type="password" className="form-control" />
+              <input
+                name="password"
+                type="password"
+                className="form-control"
+                value={password}
+                onChange={update}
+              />
             </div>
-            <Button type="submit" value="Submit" data-type="login">Submit</Button>
+            <Button type="submit" value="Submit" data-type="login">
+              Submit
+            </Button>
           </Form>
         </Col>
       </Row>
     </Container>
   );
 }
+const mapStateToProps = state => ({
+  user: state.user
+});
 
-export default Login;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      createUser: createUser,
+      loginUser
+    },
+    dispatch
+  );
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

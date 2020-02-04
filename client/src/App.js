@@ -1,6 +1,8 @@
 // DEPENDENCIES
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Navbar, Nav, Button, Row } from "react-bootstrap";
 // REDUX
 import { bindActionCreators } from "redux";
 import fetchYelp from "./config/apis/fetchYelp";
@@ -14,11 +16,9 @@ import {
 // import Main from "./containers/Main";
 import ShoppingCart from "./containers/ShoppingCart";
 import "./styles/App.css";
-import { Navbar, Nav, Button, Row } from "react-bootstrap";
 // import PetPage from "./containers/PetPage";
 import Home from "./containers/Home";
 import Footer from "./containers/Footer";
-import { connect } from "react-redux";
 
 
 
@@ -30,15 +30,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
+      login: {
+        email: "",
+        password: ""
+      },
+      register: {
+        email: "",
+        password: "",
+        name: ""
+      }
     };
 
   }
   // ====================================
   // Life Cycle methods
   componentDidMount() {
-    // const { fetchYelp } = this.props;
-    this.geoLocate();
+    console.log("THE FUNCTION FOR REGISTER", this.props.createUser)
+    // this.geoLocate();
     // console.log(sessionStorage.getItem)
     // When do I fire off this function???
   }
@@ -48,39 +56,38 @@ class App extends Component {
 
   geoLocate = () => {
     const { fetchYelp } = this.props;
-
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
       maximumAge: 0
     };
-
     const success = function(pos) {
       const crd = pos.coords;
       fetchYelp(crd);
     };
-
     const error = function(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     };
-
     navigator.geolocation.getCurrentPosition(success, error, options);
   };
+
   // should show if im logg
   updateLocation = e => {
     let input = e.target.value;
     this.setState({
       value: input
     });
-
-    // console.log("updating location")
   };
+
   submit = e => {
+    const { createUser, loginUser } = this.props
     e.preventDefault();
+
     const btnType = e.target.children[1].dataset.type;
     // TAKES THE INFO AND SEND IT BACK POST REQUEST
     if(btnType === "register") {
       // DO API CALL FOR REGISTER ROUTE
+      // createUser
       console.log("REGISTER")
     } else {
       // DO API CALL FOR LOGIN ROUTE
@@ -91,11 +98,41 @@ class App extends Component {
     // Yelp needs to know the location for animal shelters
   };
 
+  formValueUpdate = (e) => {
+    // console.log(e.target)
+    const relPath = window.location.pathname;
+    const { value, name } = e.target
+    console.log(value, name, relPath)
+    if(relPath === "/login") {
+      switch (name) {
+        case "email":
+           this.setState(prevState => ({
+             login: {
+               password: prevState.login.password,
+               email: value
+             }
+           }));
+          break
+        case "password":
+           this.setState(prevState => ({
+             login: {
+               password: value,
+               email: prevState.login.email
+             }
+           }));
+          break
+        default:
+          break
+      }
+     
+
+    }
+  }
+
+
   footerChange = () => {
     const relPath = window.location.pathname;
-
     if (relPath === "/") {
-      console.log("at home");
       this.setState({
         footShow: true
       });
@@ -107,7 +144,9 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.props)
+    // console.log("PROPS FROM REDUX", this.props)
+    const { formValueUpdate } = this
+    const { login } = this.state
     return (
       <Router>
         <header>
@@ -148,7 +187,7 @@ class App extends Component {
           </Route> */}
 
           <Route path="/login">
-            <Login submit={this.submit} />
+            <Login loginInfo={this.state.login} update={formValueUpdate} />
             <Footer />
           </Route>
           <Route path="/register">
