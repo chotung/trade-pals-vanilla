@@ -45,7 +45,6 @@ class App extends Component {
   // ====================================
   // Life Cycle methods
   componentDidMount() {
-    console.log("THE FUNCTION FOR REGISTER", this.props.createUser)
     // this.geoLocate();
     // console.log(sessionStorage.getItem)
     // When do I fire off this function???
@@ -80,18 +79,26 @@ class App extends Component {
   };
 
   submit = e => {
+    // WHEN SUBMIT VALIDATE THE PASSWORD
     const { createUser, loginUser } = this.props
+    const loginInfo = this.state.login
+    const registerInfo = this.state.register
     e.preventDefault();
 
     const btnType = e.target.children[1].dataset.type;
     // TAKES THE INFO AND SEND IT BACK POST REQUEST
     if(btnType === "register") {
       // DO API CALL FOR REGISTER ROUTE
-      // createUser
+      // DO CHECKS TO MAKE SURE IT'S NOT EMPTY WHEN THEY SUBMIT
+
+      createUser(registerInfo)
       console.log("REGISTER")
     } else {
+      loginUser(loginInfo)
       // DO API CALL FOR LOGIN ROUTE
+      // DO CHECKS TO MAKE SURE IT'S NOT EMPTY WHEN THEY SUBMIT
       console.log("LOGIN")
+
     }
     // Updates the location with new location
     // Google needs to know about location for the MAP
@@ -101,8 +108,8 @@ class App extends Component {
   formValueUpdate = (e) => {
     // console.log(e.target)
     const relPath = window.location.pathname;
-    const { value, name } = e.target
-    console.log(value, name, relPath)
+    const { value, name,  } = e.target
+    // console.log(value, name, relPath)
     if(relPath === "/login") {
       switch (name) {
         case "email":
@@ -124,8 +131,38 @@ class App extends Component {
         default:
           break
       }
-     
-
+    } else if(relPath === "/register") {
+      switch (name) {
+        case "email":
+          this.setState(prevState => ({
+            register: {
+              password: prevState.register.password,
+              name: prevState.register.name,
+              email: value
+            }
+          }));
+          break;
+        case "password":
+          this.setState(prevState => ({
+            register: {
+              name: prevState.register.name,
+              password: value,
+              email: prevState.register.email
+            }
+          }));
+          break;
+        case "name":
+          this.setState(prevState => ({
+            register: {
+              name: value,
+              password: prevState.register.password,
+              email: prevState.register.email
+            }
+          }));
+          break
+        default:
+          break;
+      }
     }
   }
 
@@ -145,8 +182,8 @@ class App extends Component {
 
   render() {
     // console.log("PROPS FROM REDUX", this.props)
-    const { formValueUpdate } = this
-    const { login } = this.state
+    const { formValueUpdate, submit } = this
+    const { login, register } = this.state
     return (
       <Router>
         <header>
@@ -180,20 +217,26 @@ class App extends Component {
           </Route> */}
           <Route path="/shoppingcart">
             <ShoppingCart />
-            <Footer/>
+            <Footer />
           </Route>
           {/* <Route path="/petpage">
             <PetPage />
           </Route> */}
 
           <Route path="/login">
-            <Login loginInfo={this.state.login} update={formValueUpdate} />
+            <Login
+              submit={submit}
+              loginInfo={this.state.login}
+              update={formValueUpdate}
+            />
             <Footer />
           </Route>
+
           <Route path="/register">
-            <Register submit={this.submit} />
+            <Register submit={submit} registerInfo={register} update={formValueUpdate} />
             <Footer />
           </Route>
+
           <Route path="/">
             <div className="m-0 contento">
               <UserLocationForm

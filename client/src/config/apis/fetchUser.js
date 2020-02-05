@@ -13,12 +13,13 @@ const createUser = (registerInfo) => {
   return async dispatch => {
     try {
       console.log("USER REGISTER: ", registerInfo);
+      const { email, password, name } = registerInfo
 
       dispatch(createNewUserPending());
-      const res = await axios.post(`/register`, {
-        // email,
-        // password,
-        // name
+      const res = await axios.post(`/api/register`, {
+        email,
+        password,
+        name
       });
       if (res.error) {
         throw res.error;
@@ -40,12 +41,12 @@ const createUser = (registerInfo) => {
 const loginUser = (loginInfo) => {
   return async dispatch => {
     try {
-      console.log("USER REGISTER: ", loginInfo);
-
+      console.log("USER LOGIN: ", loginInfo);
+      const { email, password } = loginInfo
       dispatch(userLoginPending());
-      const res = await axios.post(`/register`, {
-        // email,
-        // password,
+      const res = await axios.post(`/api/login`, {
+        email,
+        password,
       });
       if (res.error) {
         throw res.error;

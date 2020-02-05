@@ -19,7 +19,7 @@ import { connect } from "react-redux";
 
 const Login = (props) => {
 //  console.log("LOGIN COMPONENT", props);
- const { update } = props
+ const { update, submit } = props
  const { email, password } = props.loginInfo
   return (
     <Container fluid className="registerCon">
@@ -30,7 +30,7 @@ const Login = (props) => {
           src="https://petcentral.chewy.com/wp-content/uploads/Dog_Normal_Sleep_Puppy_Dec_LS_MZ-1.jpg"
         />
         <Col className="registerCol" sm={12}>
-          <Form className="registerForm">
+          <Form className="registerForm" onSubmit={submit}>
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
