@@ -45,8 +45,20 @@ class App extends Component {
   // ====================================
   // Life Cycle methods
   componentDidMount() {
+    const {loginUser} = this.props
+
     // this.geoLocate();
-    // console.log(sessionStorage.getItem)
+    const ses = sessionStorage.getItem("User")
+    const parsedSes = JSON.parse(ses)
+
+    if(ses) {
+      console.log("parsed Session", parsedSes);
+      // MAKES SURE THAT REDUX STORE REFLECTS THAT
+      loginUser(parsedSes) 
+    } else {
+      // LOGOUT THE USER FROM REDUX
+
+    }
     // When do I fire off this function???
   }
 

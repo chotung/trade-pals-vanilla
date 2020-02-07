@@ -44,25 +44,25 @@ const createUser = (registerInfo) => {
 const loginUser = (loginInfo) => {
   return async dispatch => {
     try {
-      console.log("USER LOGIN: ", loginInfo);
-      const { email, password } = loginInfo
-      dispatch(userLoginPending());
-      const res = await axios.post(`/api/login`, {
-        email,
-        password,
-      });
-      if (res.error) {
-        throw res.error;
+      if(loginInfo.msg) {
+        dispatch(userLoginSuccess(loginInfo))
       } else {
-        const data = JSON.stringify(res.data);
-        sessionStorage.setItem("User", data);
+        const { email, password } = loginInfo;
+        dispatch(userLoginPending());
+        const res = await axios.post(`/api/login`, {
+          email,
+          password
+        });
+        if (res.error) {
+          throw res.error;
+        } else {
+          const data = JSON.stringify(res.data);
+          sessionStorage.setItem("User", data);
+        }
+        dispatch(userLoginSuccess(res.data));
+        return res.data;
+
       }
-
-      console.log("RESPONSE DATA", res.data);
-      dispatch(userLoginSuccess(res.data));
-      
-
-      return res.data;
     } catch (error) {
       dispatch(userLoginError(error));
     }
