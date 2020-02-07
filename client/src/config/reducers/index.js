@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   petCard,
   shoppingCart,
   yelpReducer,
-  user
+  userSess: user
 });
 
 export default rootReducer;

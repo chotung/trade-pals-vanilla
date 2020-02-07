@@ -10,7 +10,12 @@ export const CREATE_NEW_USER_ERROR = "CREATE_NEW_USER_ERROR";
 export const USER_LOGIN_PENDING = "USER_LOGIN_PENDING";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_LOGIN_ERROR = "USER_LOGIN_ERROR";
+// LOGOUT
+export const USER_LOGOUT_PENDING = "USER_LOGOUT_PENDING";
+export const USER_LOGOUT_SUCCESS = "USER_LOGOUT_SUCCESS";
+export const USER_LOGOUT_ERROR = "USER_LOGOUT_ERROR";
 
+// YELP
 
 export const fetchYelpPending = function() {
     return {
@@ -40,10 +45,10 @@ export const createNewUserPending = function() {
   };
 };
 
-export const createNewUserSuccess = function(businesses) {
+export const createNewUserSuccess = function() {
   return {
     type: CREATE_NEW_USER_SUCCESS,
-    payload: businesses
+    // payload: businesses
   };
 };
 
@@ -54,37 +59,46 @@ export const createNewUserError = function(error) {
   };
 };
 
-
+// LOGIN
 
 export const userLoginPending = function() {
   return {
-    type: CREATE_NEW_USER_PENDING
+    type: USER_LOGIN_PENDING
   };
 };
 
-export const userLoginSuccess = function(businesses) {
+export const userLoginSuccess = function(userSess) {
   return {
-    type: CREATE_NEW_USER_SUCCESS,
-    payload: businesses
+    type: USER_LOGIN_SUCCESS,
+    payload: userSess
   };
 };
 
 export const userLoginError = function(error) {
   return {
-    type: CREATE_NEW_USER_ERROR,
+    type: USER_LOGIN_ERROR,
     error: error
   };
 };
 
 
+//LOGOUT
+export const userLogoutPending = function() {
+  return {
+    type: USER_LOGOUT_PENDING
+  };
+};
 
+export const userLogoutSuccess = function(userSess) {
+  return {
+    type:USER_LOGOUT_SUCCESS,
+    // payload: userSess
+  };
+};
 
-
-// createNewUserSuccess,
-// createNewUserError
-//   createNewUserPending,
-
-
-  // userLoginPending,
-  // userLoginError,
-  // userLoginSuccess
+export const userLogoutError = function(error) {
+  return {
+    type: USER_LOGOUT_ERROR,
+    error: error
+  };
+};

@@ -95,11 +95,16 @@ class App extends Component {
       console.log("REGISTER")
     } else {
       loginUser(loginInfo)
+      
       // DO API CALL FOR LOGIN ROUTE
       // DO CHECKS TO MAKE SURE IT'S NOT EMPTY WHEN THEY SUBMIT
       console.log("LOGIN")
 
     }
+
+    // CONVERT INTO A SWITCH STATEMENT BASED OFF BTNTYPE -- LOGOUT BUTTON
+
+
     // Updates the location with new location
     // Google needs to know about location for the MAP
     // Yelp needs to know the location for animal shelters
@@ -184,6 +189,8 @@ class App extends Component {
     // console.log("PROPS FROM REDUX", this.props)
     const { formValueUpdate, submit } = this
     const { login, register } = this.state
+    // const loggedUser = sessionStorage.getItem("user");
+
     return (
       <Router>
         <header>
@@ -200,6 +207,7 @@ class App extends Component {
               <Nav className="mr-auto"></Nav>
               <Row onClick={this.footerRender} className="authentication-link">
                 <Link to="/login">Login</Link>
+                <Link to="/logout">Logout</Link>
                 <Link to="/register">Register</Link>
                 <Link className="cart" to="/shoppingcart">
                   <Button className="mr-sm-2" variant="outline-success">
@@ -222,11 +230,13 @@ class App extends Component {
           {/* <Route path="/petpage">
             <PetPage />
           </Route> */}
-
+          <Route path="/logout">
+            Logout
+          </Route>
           <Route path="/login">
             <Login
               submit={submit}
-              loginInfo={this.state.login}
+              loginInfo={login}
               update={formValueUpdate}
             />
             <Footer />
@@ -258,7 +268,7 @@ const mapStateToProps = state => ({
   yelpError: getYelpDataError(state),
   businesses: getYelpData(state),
   yelpPending: getYelpDataPending(state),
-  user: state.user
+  userSess: state.userSess
 });
 
 const mapDispatchToProps = dispatch =>

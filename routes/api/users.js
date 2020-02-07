@@ -37,7 +37,6 @@ router.post("/register", (req, res) => {
         // Save user
         newUser
           .save()
-          // redirect?
           .then(
             res.json({
               msg: "Successfully Registered"
@@ -78,6 +77,7 @@ router.post("/login", (req, res) => {
 
 // DELETE SESSIONS
 router.delete("/logout", (req, res) => {
+  console.log(req.session)
   req.session.destroy((err) => {
     //delete session data from store, using sessionID in cookie
     if (err) throw err;

@@ -4,7 +4,10 @@ import {
   CREATE_NEW_USER_ERROR,
   USER_LOGIN_PENDING,
   USER_LOGIN_SUCCESS,
-  USER_LOGIN_ERROR
+  USER_LOGIN_ERROR,
+  USER_LOGOUT_PENDING,
+  USER_LOGOUT_SUCCESS,
+  USER_LOGOUT_ERROR,
 }
 from "../actions/apiActions/apiAction"
 
@@ -35,6 +38,7 @@ export const user = (state = initialState, action) => {
         pending: false,
         error:action.error
       }
+      
     case USER_LOGIN_PENDING:
       return {
         ...state,
@@ -44,7 +48,8 @@ export const user = (state = initialState, action) => {
       return {
         ...state,
         pending: false,
-        user: action.payload
+        name: action.payload.sessUser.name,
+        sess: action.payload.sessUser
       }
     case USER_LOGIN_ERROR:
       return {
@@ -52,7 +57,25 @@ export const user = (state = initialState, action) => {
         pending: false,
         error:action.error
       }
-
+    
+    case USER_LOGOUT_PENDING:
+      return {
+        ...state,
+        pending: true
+      }
+    case USER_LOGOUT_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        user: action.payload
+      }
+    case USER_LOGOUT_ERROR:
+      return {
+        ...state,
+        pending: false,
+        error:action.error
+      }
+    
     default:
       return state
   }
@@ -68,3 +91,7 @@ export const createNewUserError = state => state.error
 export const userLoginPending = state => state.pending 
 export const userLoginError = state => state.error 
 export const userLoginSuccess = state => state.user
+
+// export const userLogoutPending = state => state.pending 
+// export const userLogoutError = state => state.error 
+// export const userLogoutSuccess = state => state.user

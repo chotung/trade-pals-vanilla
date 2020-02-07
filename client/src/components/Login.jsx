@@ -4,19 +4,6 @@ import { bindActionCreators } from "redux"
 import { createUser, loginUser } from "../config/apis/fetchUser";
 import { connect } from "react-redux";
 
-
-// const registerForm = {
-//   backgroundColor: "rgb( 250, 251, 252, 0.9)",
-//   minWidth: "50vw",
-//   padding: "2rem",
-//   borderRadius: "24px",
-//   height: "auto",
-//   boxShadow: "0px 2px 36px 6px rgba(0,0,0,0.3)"
-// };
-
-
-
-
 const Login = (props) => {
 //  console.log("LOGIN COMPONENT", props);
  const { update, submit } = props
