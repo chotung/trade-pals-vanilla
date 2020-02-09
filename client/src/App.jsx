@@ -46,19 +46,14 @@ class App extends Component {
   // Life Cycle methods
   componentDidMount() {
     const {loginUser} = this.props
-
     // this.geoLocate();
     const ses = sessionStorage.getItem("User")
     const parsedSes = JSON.parse(ses)
 
     if(ses) {
-      console.log("parsed Session", parsedSes);
-      // MAKES SURE THAT REDUX STORE REFLECTS THAT
       loginUser(parsedSes) 
-    } else {
-      // LOGOUT THE USER FROM REDUX
-
-    }
+    } 
+    // LOGOUT THE USER FROM REDUX
     // When do I fire off this function???
   }
 
@@ -102,20 +97,14 @@ class App extends Component {
     if(btnType === "register") {
       // DO API CALL FOR REGISTER ROUTE
       // DO CHECKS TO MAKE SURE IT'S NOT EMPTY WHEN THEY SUBMIT
-
       createUser(registerInfo)
-      console.log("REGISTER")
     } else {
       loginUser(loginInfo)
-      
       // DO API CALL FOR LOGIN ROUTE
       // DO CHECKS TO MAKE SURE IT'S NOT EMPTY WHEN THEY SUBMIT
-      console.log("LOGIN")
-
     }
 
     // CONVERT INTO A SWITCH STATEMENT BASED OFF BTNTYPE -- LOGOUT BUTTON
-
 
     // Updates the location with new location
     // Google needs to know about location for the MAP
@@ -201,8 +190,14 @@ class App extends Component {
     // console.log("PROPS FROM REDUX", this.props)
     const { formValueUpdate, submit } = this
     const { login, register } = this.state
+    const { name } = this.props.userSess;
     // const loggedUser = sessionStorage.getItem("user");
-
+    /**
+     * if name 
+     *  render the logout
+     * else 
+     *  render the login
+     */
     return (
       <Router>
         <header>
@@ -219,7 +214,7 @@ class App extends Component {
               <Nav className="mr-auto"></Nav>
               <Row onClick={this.footerRender} className="authentication-link">
                 <Link to="/login">Login</Link>
-                <Link to="/logout">Logout</Link>
+                {/* <Link to="/logout">Logout</Link> */}
                 <Link to="/register">Register</Link>
                 <Link className="cart" to="/shoppingcart">
                   <Button className="mr-sm-2" variant="outline-success">
@@ -242,9 +237,9 @@ class App extends Component {
           {/* <Route path="/petpage">
             <PetPage />
           </Route> */}
-          <Route path="/logout">
+          {/* <Route path="/logout">
             Logout
-          </Route>
+          </Route> */}
           <Route path="/login">
             <Login
               submit={submit}
