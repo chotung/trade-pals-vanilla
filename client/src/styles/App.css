@@ -75,6 +75,14 @@ body {
   text-align: right;
 }
 
+.cart-row {
+  margin: .375rem 0;
+}
+
+.cart-item {
+  margin: .2025rem 0;
+}
+
 .cart-item .card-header,
 .review-item .card-header {
   max-width: 250px;

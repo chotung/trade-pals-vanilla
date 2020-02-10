@@ -1,6 +1,6 @@
 import React from "react";
 import CartItem from "../components/CartItem";
-import DeliveryOptions from "../containers/DeliveryOptions";
+// import DeliveryOptions from "../containers/DeliveryOptions";
 import { connect } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
 import { addPetToCatalogue, removeCartItem } from "../config/actions/index";
@@ -28,17 +28,29 @@ const ShoppingCart = props => {
 
   const createCartItems = () => {
     const { cartItems } = props;
-    return cartItems.map((cart, i) => {
-      return <CartItem key={i} cart={cart} removeFromCart={removeFromCart} />;
-    });
+    
+    if(cartItems.length !== 0) {
+       return cartItems.map((cart, i) => {
+         console.log(cart);
+         return (
+           <CartItem key={i} cart={cart} removeFromCart={removeFromCart} />
+         );
+       });
+    } else {
+      const emptyCart = {
+        desc: "Empty cart"
+      }
+      return <CartItem cart={emptyCart}  />
+    }
+   
   };
 
   return (
-    <Container fluid>
-      <Row>
+    <Container className="cart-cont" fluid>
+      <Row className="cart-row">
         <Col className="cart-col">{createCartItems()}</Col>
         <Col lg="2" className="delivery-col">
-          <DeliveryOptions />
+          {/* <DeliveryOptions /> */}
         </Col>
       </Row>
     </Container>

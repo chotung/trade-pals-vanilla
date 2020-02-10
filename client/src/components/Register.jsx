@@ -3,20 +3,6 @@ import { Container, Row, Col, Button, Image, Form } from "react-bootstrap"
 
 // on small screens center not flex-end
 const Register = (props) => {
-  // let history = useHistory();
-  // let location = useLocation();
-
-  // REACT ROUTER REDIRECT
-  // let { from } = location.state || { from: { pathname: "/" } };
-  // let signup = () => {
-  //   fakeAuth.authenticate(() => {
-  //     history.replace(from);
-  //   });
-  // };
-
-  // =====================
-
-
   const { update, submit } = props;
   const { email, password, name } = props.registerInfo;
 

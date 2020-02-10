@@ -194,18 +194,9 @@ class App extends Component {
   }
 
   render() {
-    // console.log("PROPS FROM REDUX", this.props)
     const { formValueUpdate, submit, logout } = this
     const { login, register } = this.state
     const { name } = this.props.userSess;
-    // const loggedUser = sessionStorage.getItem("user");
-    /**
-     * if name 
-     *  render the logout
-     * else 
-     *  render the login
-     */
-    console.log(this.props)
     return (
       <Router>
         <header>
