@@ -71,10 +71,6 @@ body {
      object-fit: cover;
 }
 
-.delivery-col {
-  text-align: right;
-}
-
 .cart-row {
   margin: .375rem 0;
 }
@@ -106,6 +102,10 @@ body {
 .review-item .info-block {
   width: 100%;
   padding: 10px;
+}
+
+.pet-container {
+  margin-top: 1rem;
 }
 
 .pet-detail-row .col {
@@ -297,5 +297,17 @@ header, footer, #map-canvas {
   width: 100%;
   height: 100% !important;
   opacity: 0.5;
+}
+
+.delivery-container {
+  background-color: #d3caca;
+}
+
+.delivery-container .row {
+  margin-top: 1rem 0;
+}
+
+.delivery-col {
+  text-align: center;
 }
 /*# sourceMappingURL=App.css.map */

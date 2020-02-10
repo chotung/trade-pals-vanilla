@@ -1,6 +1,6 @@
 import React from "react";
 import CartItem from "../components/CartItem";
-// import DeliveryOptions from "../containers/DeliveryOptions";
+import DeliveryOptions from "../containers/DeliveryOptions";
 import { connect } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
 import { addPetToCatalogue, removeCartItem } from "../config/actions/index";
@@ -50,7 +50,7 @@ const ShoppingCart = props => {
       <Row className="cart-row">
         <Col className="cart-col">{createCartItems()}</Col>
         <Col lg="2" className="delivery-col">
-          {/* <DeliveryOptions /> */}
+          <DeliveryOptions />
         </Col>
       </Row>
     </Container>

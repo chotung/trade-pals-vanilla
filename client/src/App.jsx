@@ -14,10 +14,10 @@ import {
 } from "./config/reducers/apiReducer/yelpReducer";
 // COMPONENTS
 import UserContainer from "./containers/UserContainer"
-// import Main from "./containers/Main";
+import PetPage from "./containers/PetPage";
+import Main from "./containers/Main";
 import ShoppingCart from "./containers/ShoppingCart";
 import "./styles/App.css";
-// import PetPage from "./containers/PetPage";
 import Home from "./containers/Home";
 import Footer from "./containers/Footer";
 
@@ -207,18 +207,24 @@ class App extends Component {
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-na" className="mobile-nav">
-              {/* <Link className="index-pet" to="/index/pets">
+              <Link className="index-pet" to="/index/pets">
                 All Pets
-              </Link> */}
+              </Link>
               <Nav className="mr-auto"></Nav>
               <Row onClick={this.footerRender} className="authentication-link">
                 {name ? (
-                  <Link onClick={logout}to="/logout">Logout</Link>
+                  <Link onClick={logout} to="/">
+                    Logout
+                  </Link>
                 ) : (
                   <Link to="/login">Login</Link>
                 )}
 
-                {name ? <Link to="/user">Profile</Link> : <Link to="/register">Register</Link>}
+                {name ? (
+                  <Link to="/user">Profile</Link>
+                ) : (
+                  <Link to="/register">Register</Link>
+                )}
                 <Link className="cart" to="/shoppingcart">
                   <Button className="mr-sm-2" variant="outline-success">
                     Cart
@@ -230,19 +236,28 @@ class App extends Component {
         </header>
 
         <Switch>
-          {/* <Route path="/index/pets">
-            {this.props.user.location ? <Main /> : <div>false</div>}
-          </Route> */}
+          <Route path="/index/pets">
+            {this.props.userSess.location.length !== 0 ? (
+              <Main />
+            ) : (
+              <div>false</div>
+            )}
+            <Footer />
+          </Route>
+
+          <Route path="/petpage">
+            <PetPage />
+            <Footer />
+          </Route>
+
           <Route path="/shoppingcart">
             <ShoppingCart />
             <Footer />
           </Route>
-          {/* <Route path="/petpage">
-            <PetPage />
-          </Route> */}
+
           <Route path="/login">
             {name ? (
-              <Redirect to="/user" />
+              <Redirect to={`/user/${name}`} />
             ) : (
               <Login
                 submit={submit}
@@ -250,14 +265,14 @@ class App extends Component {
                 update={formValueUpdate}
               />
             )}
-            {/* <Route path="/user">
-              <UserContainer />
-            </Route> */}
             <Footer />
           </Route>
-          <Route path="/user">
+
+          <Route path={`/user/${name}`}>
             <UserContainer />
+            <Footer />
           </Route>
+
           <Route path="/register">
             <Register
               submit={submit}

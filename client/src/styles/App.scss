@@ -1,5 +1,9 @@
 $shadow-color: rgba(160, 148, 148, 0.795);
 $shadow-colorPurple: rgba(12, 2, 97, 0.363);
+// $formColor: rgba(183, 188, 192, 0.9);
+$formColor: rgba(250, 251, 252, 0.9);
+
+
 // * {
   // border: solid 1px black;
 // }
@@ -71,9 +75,7 @@ body {
   object-fit: cover;
 }
 
-.delivery-col {
-  text-align: right;
-}
+
 .cart-row {
   margin: .375rem 0;
 }
@@ -102,6 +104,10 @@ body {
   }
 }
 
+.pet-container {
+  margin-top: 1rem;
+}
+
 .pet-detail-row {
   .col {
     width: 100%;
@@ -117,8 +123,6 @@ body {
 .homepage {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
   .home-row {
     width: 100%;
     display: flex;
@@ -183,8 +187,6 @@ header, footer, #map-canvas {
 
 #map-canvas {
   height: 100%;
-  // .helloGoogle {
-  // }
 }
 
 .footer {
@@ -194,7 +196,6 @@ header, footer, #map-canvas {
   width: 100%;
   color: white;
   z-index: 1;
-  // position: absolute !important;
   bottom: 0;
 }
 // Footer to show or hide
@@ -208,30 +209,15 @@ header, footer, #map-canvas {
 
 //  Header links
 
-// Links need to fixed
-
 .authentication-link {
-  // flex-direction: column;
   align-items: center;
   a {
     margin-left: 1em;
   }
 }
-
-// .mobile-nav {
-//   display: flex;
-// }
-
-// .show {
-//   // position: relative !important;
-//   flex-direction: column;
-
-// }
-
-
 // =================================
  .registerForm {
-  background-color: rgba( 250, 251, 252, 0.9);
+  background-color: $formColor;
   min-width: 50vw;
   padding: 2rem;
   border-radius: 24px;
@@ -269,3 +255,19 @@ header, footer, #map-canvas {
   height: 100% !important;
   opacity: 0.5;
 }
+
+
+
+// Delivery options
+
+.delivery-container {
+  background-color: rgb(211, 202, 202);
+  .row {
+    margin-top: 1rem 0;
+  }
+  // box-shadow: 0px 2px 36px 6px rgba(0,0,0,0.3);
+}
+
+.delivery-col {
+  text-align: center;
+} 

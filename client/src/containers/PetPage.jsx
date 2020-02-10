@@ -24,7 +24,7 @@ const PetPage = props => {
       </Row>
       <Row>
         <Col>
-          <BuyingOptions />
+          {/* <BuyingOptions /> */}
         </Col>
       </Row> 
     </Container>
