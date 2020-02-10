@@ -65,11 +65,7 @@ export const user = (state = initialState, action) => {
         pending: true
       }
     case USER_LOGOUT_SUCCESS:
-      return {
-        ...state,
-        pending: false,
-        user: action.payload
-      }
+      return initialState
     case USER_LOGOUT_ERROR:
       return {
         ...state,
