@@ -12,6 +12,7 @@ import {
 from "../actions/apiActions/apiAction"
 
 const initialState = {
+  pets: [],
   name:"",
   location: {},
   pending: false,

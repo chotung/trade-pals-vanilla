@@ -1,6 +1,6 @@
 // DEPENDENCIES
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { Navbar, Nav, Button, Row } from "react-bootstrap";
 // REDUX
@@ -13,6 +13,7 @@ import {
   getYelpDataPending
 } from "./config/reducers/apiReducer/yelpReducer";
 // COMPONENTS
+import UserContainer from "./containers/UserContainer"
 // import Main from "./containers/Main";
 import ShoppingCart from "./containers/ShoppingCart";
 import "./styles/App.css";
@@ -213,9 +214,13 @@ class App extends Component {
               </Link> */}
               <Nav className="mr-auto"></Nav>
               <Row onClick={this.footerRender} className="authentication-link">
-                <Link to="/login">Login</Link>
-                {/* <Link to="/logout">Logout</Link> */}
-                <Link to="/register">Register</Link>
+                {name ? (
+                  <Link to="/logout">Logout</Link>
+                ) : (
+                  <Link to="/login">Login</Link>
+                )}
+
+                {name ? <Link to="/user">Profile</Link> : <Link to="/register">Register</Link>}
                 <Link className="cart" to="/shoppingcart">
                   <Button className="mr-sm-2" variant="outline-success">
                     Cart
@@ -237,20 +242,30 @@ class App extends Component {
           {/* <Route path="/petpage">
             <PetPage />
           </Route> */}
-          {/* <Route path="/logout">
-            Logout
-          </Route> */}
           <Route path="/login">
-            <Login
-              submit={submit}
-              loginInfo={login}
-              update={formValueUpdate}
-            />
+            {name ? (
+              <Redirect path="/user" />
+            ) : (
+              <Login
+                submit={submit}
+                loginInfo={login}
+                update={formValueUpdate}
+              />
+            )}
+            {/* <Route path="/user">
+              <UserContainer />
+            </Route> */}
             <Footer />
           </Route>
-
+          <Route path="/user">
+            <UserContainer />
+          </Route>
           <Route path="/register">
-            <Register submit={submit} registerInfo={register} update={formValueUpdate} />
+            <Register
+              submit={submit}
+              registerInfo={register}
+              update={formValueUpdate}
+            />
             <Footer />
           </Route>
 
@@ -289,37 +304,3 @@ const mapDispatchToProps = dispatch =>
   );
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-/**
- * <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-  </div>
-</nav>
- */
