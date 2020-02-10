@@ -6,7 +6,7 @@ import { Navbar, Nav, Button, Row } from "react-bootstrap";
 // REDUX
 import { bindActionCreators } from "redux";
 import fetchYelp from "./config/apis/fetchYelp";
-import { createUser, loginUser } from "./config/apis/fetchUser";
+import { createUser, loginUser, logoutUser } from "./config/apis/fetchUser";
 import {
   getYelpDataError,
   getYelpData,
@@ -187,9 +187,15 @@ class App extends Component {
     }
   };
 
+  logout = () => {
+    const logoutFunc = this.props.logoutUser
+    const userSess = JSON.parse(sessionStorage.getItem("User"))
+    logoutFunc(userSess)
+  }
+
   render() {
     // console.log("PROPS FROM REDUX", this.props)
-    const { formValueUpdate, submit } = this
+    const { formValueUpdate, submit, logout } = this
     const { login, register } = this.state
     const { name } = this.props.userSess;
     // const loggedUser = sessionStorage.getItem("user");
@@ -199,6 +205,7 @@ class App extends Component {
      * else 
      *  render the login
      */
+    console.log(this.props)
     return (
       <Router>
         <header>
@@ -215,7 +222,7 @@ class App extends Component {
               <Nav className="mr-auto"></Nav>
               <Row onClick={this.footerRender} className="authentication-link">
                 {name ? (
-                  <Link to="/logout">Logout</Link>
+                  <Link onClick={logout}to="/logout">Logout</Link>
                 ) : (
                   <Link to="/login">Login</Link>
                 )}
@@ -244,7 +251,7 @@ class App extends Component {
           </Route> */}
           <Route path="/login">
             {name ? (
-              <Redirect path="/user" />
+              <Redirect to="/user" />
             ) : (
               <Login
                 submit={submit}
@@ -296,9 +303,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      fetchYelp: fetchYelp,
-      createUser: createUser,
-      loginUser
+      fetchYelp,
+      createUser,
+      loginUser,
+      logoutUser
     },
     dispatch
   );

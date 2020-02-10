@@ -74,11 +74,13 @@ const logoutUser = (sessionInfo) => {
   return async dispatch => {
     try {
       console.log("LOGGING OUT", sessionInfo)
+      const { sessUser } = sessionInfo
+      console.log("LOGGING OUT", sessUser)
+      sessionStorage.clear()
       dispatch(userLogoutPending())
-      const res = await axios.post(`/api/logout`, {
-        sessionInfo
+      const res = await axios.delete(`/api/logout`, {
+        sessUser
       })
-
       if(res.error) {
         throw res.error
       }

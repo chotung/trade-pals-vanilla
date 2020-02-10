@@ -93,6 +93,6 @@ export const userLoginPending = state => state.pending
 export const userLoginError = state => state.error 
 export const userLoginSuccess = state => state.user
 
-// export const userLogoutPending = state => state.pending 
-// export const userLogoutError = state => state.error 
-// export const userLogoutSuccess = state => state.user
+export const userLogoutPending = state => state.pending 
+export const userLogoutError = state => state.error 
+export const userLogoutSuccess = state => state.user

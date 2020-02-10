@@ -77,6 +77,7 @@ router.post("/login", (req, res) => {
 
 // DELETE SESSIONS
 router.delete("/logout", (req, res) => {
+  console.log(req.body)
   console.log(req.session)
   req.session.destroy((err) => {
     //delete session data from store, using sessionID in cookie
