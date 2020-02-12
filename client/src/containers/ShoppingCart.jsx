@@ -31,7 +31,7 @@ const ShoppingCart = props => {
     
     if(cartItems.length !== 0) {
        return cartItems.map((cart, i) => {
-         console.log(cart);
+        //  console.log(cart);
          return (
            <CartItem key={i} cart={cart} removeFromCart={removeFromCart} />
          );

@@ -71,6 +71,10 @@ body {
      object-fit: cover;
 }
 
+.cart-cont {
+  margin: 1rem 0;
+}
+
 .cart-row {
   margin: .375rem 0;
 }
@@ -300,7 +304,11 @@ header, footer, #map-canvas {
 }
 
 .delivery-container {
-  background-color: #d3caca;
+  background-color: #F8F9FA;
+  border: solid 1px #ecedee;
+  border-radius: 3px;
+  margin: .075rem;
+  padding: 1rem;
 }
 
 .delivery-container .row {

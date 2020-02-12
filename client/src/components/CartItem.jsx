@@ -14,7 +14,7 @@ const CartItem = props => {
     props.history.push(`/petpage/${cardId.name}`);
   };
 
-  console.log(props);
+  // console.log(props);
 
   const { cart } = props;
   // const stringPet = JSON.stringify(cart)

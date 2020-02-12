@@ -1,46 +1,38 @@
-import React, { Component } from 'react'
+import React from 'react';
 import { Container, Button, Card, Row, Col } from 'react-bootstrap'
-export default class DeliveryOptions extends Component {
-  state = {
-    shipping: true,
-    shippingOption: [{}],
-    pickup: false,
-  }
+import { connect } from "react-redux"
 
+const DeliveryOptions = (props) => {
 
-  // CHECKOUT BUTTON
-  checkout = () => {
-    /**
-     * click
-     * go to processing page
-     * doen process || error
-     * you bought your dog
-     * add the items from cart to profile
-     *    -updates the store
-     *    -update the db
-     * redirect to profile
-     */
-  }
+  const checkout = (props) => {
+    console.log(props);
+  };
 
-  render() {
-    return (
-      <Container className="delivery-container">
-        <Row>
-          <Col className="delivery-col" lg={12} >
-            <Card>
-              <h1 className="card-footer"></h1>
-              <Card.Body>
-                <Card.Text>
-                  A dog
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col lg={12}>
-            <Button>Checkout</Button>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+  return (
+    <div>
+        <Container className="delivery-container">
+         <Row>
+           <Col className="delivery-col" lg={12}>
+             <Card>
+               <Card.Body>
+                 <Card.Text>A dog</Card.Text>
+               </Card.Body>
+               <div className="card-footer">
+                 <Button onClick={() => checkout(props)}>Checkout</Button>
+               </div>
+             </Card>
+           </Col>
+         </Row>
+       </Container>
+    </div>
+  )
 }
+
+const mapStateToProps = state => ({
+  shoppingCart: state.shoppingCart,
+  userSess: state.userSess
+})
+
+
+
+export default connect(mapStateToProps)(DeliveryOptions);

@@ -5,7 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 // import CartItem from "../components/CartItem";
 import PetDetails from "../components/PetDetails";
 import Review from "../components/Review";
-import BuyingOptions from "../components/BuyingOptions";
+// import BuyingOptions from "../components/BuyingOptions";
 
 const mapStateToProps = state => {
   return {

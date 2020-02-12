@@ -197,6 +197,7 @@ class App extends Component {
     const { formValueUpdate, submit, logout } = this
     const { login, register } = this.state
     const { name } = this.props.userSess;
+
     return (
       <Router>
         <header>
@@ -221,7 +222,7 @@ class App extends Component {
                 )}
 
                 {name ? (
-                  <Link to="/user">Profile</Link>
+                  <Link to={`/user/${name}`}>Profile</Link>
                 ) : (
                   <Link to="/register">Register</Link>
                 )}

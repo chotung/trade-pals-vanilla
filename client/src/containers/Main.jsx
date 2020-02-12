@@ -17,8 +17,8 @@ const Main = props => {
     const { pets } = props;
     const chosenPet = pets.filter(pet => pet.name === event.target.id);
     const availablePets = pets.filter(pet => pet.name !== event.target.id);
-    console.log("chosenPet", chosenPet)
-    console.log("availablePets", availablePets)
+    // console.log("chosenPet", chosenPet)
+    // console.log("availablePets", availablePets)
     removePetFromCatalogue(availablePets);
     addToCart(chosenPet[0]);
   };
